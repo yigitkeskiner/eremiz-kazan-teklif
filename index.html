@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Erem Group kurumsal web tasarımı ve kazan teklif aracı."
+    />
+    <title>Erem Group | Kurumsal Teklif Aracı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Erem Group ana sayfa">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="mark-e"></span>
+          <span class="mark-g"></span>
+        </span>
+        <span>
+          <strong>EREM GROUP</strong>
+          <small>Isıtma & Soğutma</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Ana menü">
+        <a href="#kurumsal">Kurumsal</a>
+        <a href="#teklif">Teklif</a>
+        <a href="#subeler">Şubeler</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+
+      <a class="header-action" href="#teklif">Teklif Oluştur</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Erem Group</p>
+          <h1>Endüstriyel ısıtma ve soğutma çözümleri için kurumsal teklif deneyimi.</h1>
+          <p>
+            2002’den bu yana ana bayilik gücü, stoklu çalışma modeli ve geniş ürün
+            yelpazesiyle taahhüt firmaları, usta grupları ve inşaat projelerine hızlı
+            ürün tedariği.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#teklif">Kazan Teklifi Hazırla</a>
+            <a class="secondary-btn" href="#kurumsal">Kurumsalı İncele</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Erem Group özet göstergeleri">
+          <div class="panel-topline">
+            <span>Kurumsal ölçek</span>
+            <strong>2002</strong>
+          </div>
+          <div class="metric-grid">
+            <article>
+              <strong>50+</strong>
+              <span>Marka ile stoklu çalışma</span>
+            </article>
+            <article>
+              <strong>2500+</strong>
+              <span>Ürün çeşidi</span>
+            </article>
+            <article>
+              <strong>4</strong>
+              <span>İstanbul, Gebze, İzmir, Antalya yapılanması</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="kurumsal" class="section split-section">
+        <div>
+          <p class="eyebrow">Kurumsal Kimlik</p>
+          <h2>Güven veren, sade ve teknik odaklı bir marka dili.</h2>
+        </div>
+        <div class="story">
+          <p>
+            Erem Isıtma, Selim Sırrı Erdoğan’ın sektör deneyimiyle 2002 yılında
+            faaliyetlerine başladı. Şirket, 2005’te Ataşehir merkez binasına taşındı;
+            2006’da Gebze, 2011’de İzmir ve 2014’te Antalya yapılanmasıyla büyüdü.
+          </p>
+          <p>
+            Erem Group’un hedefi; insani ve ticaret ahlakı değerlerinden taviz
+            vermeden, çalışanlarıyla birlikte daha fazla kişinin tercihi olabilmek.
+          </p>
+        </div>
+      </section>
+
+      <section class="section capability-band" aria-label="Hizmet alanları">
+        <article>
+          <span>01</span>
+          <h3>Stoklu Ürün Tedariği</h3>
+          <p>Isıtma, soğutma ve mekanik tesisat ürünlerinde geniş ürün erişimi.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Kaskad Kazan Sistemleri</h3>
+          <p>E.C.A, Baymak ve Vaillant ürünleriyle hızlı teklif hesaplama.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Proje & Taahhüt Desteği</h3>
+          <p>İnşaat firmaları ve usta grupları için uygulanabilir kalem listeleri.</p>
+        </article>
+      </section>
+
+      <section id="teklif" class="section quote-section">
+        <div class="quote-heading">
+          <div>
+            <p class="eyebrow">Teklif Aracı</p>
+            <h2>Kazan ve aksesuar kalemlerini profesyonel teklif çıktısına dönüştür.</h2>
+          </div>
+          <div class="rate-box">
+            <label for="eurRate">EUR/TL</label>
+            <input id="eurRate" type="number" min="1" value="42" />
+          </div>
+        </div>
+
+        <div class="quote-shell">
+          <form class="config-panel" id="quoteForm">
+            <fieldset>
+              <legend>Müşteri Bilgisi</legend>
+              <label>
+                Firma / Müşteri
+                <input id="customer" type="text" placeholder="Müşteri adı" />
+              </label>
+              <label>
+                Proje / Bina
+                <input id="project" type="text" placeholder="Proje adı" />
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Marka</legend>
+              <div class="segmented" role="radiogroup" aria-label="Marka seçimi">
+                <button type="button" class="segment active" data-brand="ECA">E.C.A</button>
+                <button type="button" class="segment" data-brand="BAYMAK">Baymak</button>
+                <button type="button" class="segment" data-brand="VAILLANT">Vaillant</button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Kazanlar</legend>
+              <div id="boilerList" class="item-list"></div>
+            </fieldset>
+
+            <fieldset class="inline-fieldset">
+              <legend>Sistem</legend>
+              <label class="toggle-line">
+                <input id="hasWaterTank" type="checkbox" checked />
+                Boyler mevcut
+              </label>
+              <label>
+                Boyler adedi
+                <input id="waterTankCount" type="number" min="1" max="20" value="1" />
+              </label>
+              <label>
+                Marj %
+                <input id="marginRate" type="number" min="0" max="100" value="20" />
+              </label>
+            </fieldset>
+          </form>
+
+          <aside class="summary-panel">
+            <div class="summary-header">
+              <div>
+                <span>Teklif Özeti</span>
+                <strong id="summaryBrand">E.C.A</strong>
+              </div>
+              <button id="printBtn" type="button">Yazdır</button>
+            </div>
+
+            <div class="client-card">
+              <span id="summaryCustomer">Müşteri adı girilmedi</span>
+              <strong id="summaryProject">Proje adı girilmedi</strong>
+            </div>
+
+            <div id="quoteLines" class="quote-lines"></div>
+
+            <div class="totals">
+              <div>
+                <span>Satış Toplamı</span>
+                <strong id="salesTotal">€ 0,00</strong>
+              </div>
+              <div>
+                <span>TL Karşılığı</span>
+                <strong id="tryTotal">₺ 0,00</strong>
+              </div>
+              <div>
+                <span>Tahmini Kâr</span>
+                <strong id="profitTotal">₺ 0,00</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="subeler" class="section locations-section">
+        <div>
+          <p class="eyebrow">Yapılanma</p>
+          <h2>Saha ihtiyaçlarına yakın, ticari kararları hızlı alan yapı.</h2>
+        </div>
+        <div class="locations">
+          <article><span>Merkez</span><strong>Ataşehir / İstanbul</strong></article>
+          <article><span>Şube</span><strong>Gebze / Kocaeli</strong></article>
+          <article><span>Şube</span><strong>İzmir</strong></article>
+          <article><span>Şube</span><strong>Antalya</strong></article>
+        </div>
+      </section>
+    </main>
+
+    <footer id="iletisim" class="footer">
+      <div>
+        <strong>EREM ISITMA & SOĞUTMA SAN. İNŞ. TİC. LTD. ŞTİ.</strong>
+        <p>Kayışdağı İnönü Mahallesi, Evren Caddesi Kar Sokak No:18 Ataşehir / İstanbul</p>
+      </div>
+      <div>
+        <a href="tel:+902165722648">T. 0 216 572 26 48</a>
+        <a href="mailto:info@eremgroup.net">info@eremgroup.net</a>
+        <a href="https://www.eremgroup.net">www.eremgroup.net</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
