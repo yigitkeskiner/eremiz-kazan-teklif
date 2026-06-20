@@ -80,32 +80,53 @@
           <aside class="summary-panel">
             <div class="summary-header">
               <div>
-                <span>Teklif Ozeti</span>
+                <span>PROFORMA FATURA</span>
                 <strong id="summaryBrand">E.C.A</strong>
               </div>
-              <button id="printBtn" type="button">Yazdir</button>
+              <button id="printBtn" type="button">Yazdir / PDF</button>
             </div>
 
             <div class="client-card">
-              <span id="summaryCustomer">Musteri adi girilmedi</span>
-              <strong id="summaryProject">Proje adi girilmedi</strong>
+              <div class="client-meta">
+                <div><span>ALICI</span><strong id="summaryCustomer">Musteri adi girilmedi</strong></div>
+                <div><span>PROJE</span><strong id="summaryProject">Proje / bina adi girilmedi</strong></div>
+              </div>
+              <div class="teklif-meta">
+                <div><span>TEKLIF NO</span><strong id="teklifNo">-</strong></div>
+                <div><span>TEKLIF TARIHI</span><strong id="teklifTarih">-</strong></div>
+                <div><span>EUR KUR</span><strong id="eurKurDisplay">-</strong></div>
+              </div>
             </div>
 
             <div id="quoteLines" class="quote-lines"></div>
 
-            <div class="totals">
+            <div class="totals proforma-totals">
               <div>
-                <span>Satis Toplami</span>
-                <strong id="salesTotal">€ 0,00</strong>
+                <span>Toplam Tutar</span>
+                <strong id="satirToplamTutar">₺ 0,00</strong>
               </div>
               <div>
-                <span>TL Karsiligi</span>
-                <strong id="tryTotal">₺ 0,00</strong>
+                <span>İskonto</span>
+                <strong id="satirIskonto">₺ 0,00</strong>
+              </div>
+              <div class="net-toplam">
+                <span>Net Toplam</span>
+                <strong id="satirNetToplam">₺ 0,00</strong>
               </div>
               <div>
-                <span>Tahmini Kar</span>
-                <strong id="profitTotal">₺ 0,00</strong>
+                <span>KDV Toplamı (%20)</span>
+                <strong id="satirKDV">₺ 0,00</strong>
               </div>
+              <div class="genel-toplam">
+                <span>Genel Toplam</span>
+                <strong id="satirGenelToplam">₺ 0,00</strong>
+              </div>
+            </div>
+
+            <div class="banka-bilgileri">
+              <p><strong>AKBANK T.A.Ş</strong> : TR52 0004 6002 0988 8000 0610 19</p>
+              <p><strong>TÜRKİYE İŞ BANKASI A.Ş.</strong> : TR34 0006 4000 0013 3970 0241 26</p>
+              <p><strong>YAPI KREDİ BANKASI</strong> : TR60 0006 7010 0000 0087 6030 16</p>
             </div>
           </aside>
         </div>
