@@ -58,7 +58,6 @@ function toEUR(item) { return item.sym === "₺" ? item.cost / getRate() : item.
 const boilerList     = document.querySelector("#boilerList");
 const quoteLines     = document.querySelector("#quoteLines");
 const eurRate        = document.querySelector("#eurRate");
-const eurRateLabel   = document.querySelector("#eurRateLabel");
 const marginRate     = document.querySelector("#marginRate");
 const hasWaterTank   = document.querySelector("#hasWaterTank");
 const waterTankCount = document.querySelector("#waterTankCount");
@@ -69,7 +68,6 @@ function brandData() { return DATA[state.brand]; }
 function getRate()   { return Number(eurRate.value || 42); }
 function totalBoilers() { return Object.values(state.quantities).reduce((s, v) => s + Number(v || 0), 0); }
 
-// Canlı EUR/TRY kuru çek (birincil + yedek API)
 function fetchTCMBRate() {
   const label = document.querySelector("#eurRateLabel");
   const setRate = (rate) => {
@@ -77,12 +75,10 @@ function fetchTCMBRate() {
     if (label) label.textContent = "EUR/TL (canlı • " + new Date().toLocaleTimeString("tr-TR", {hour:"2-digit",minute:"2-digit"}) + ")";
     renderSummary();
   };
-  // Birincil API
   fetch("https://api.exchangerate-api.com/v4/latest/EUR")
     .then(r => r.json())
     .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
     .catch(() => {
-      // Yedek API
       fetch("https://open.er-api.com/v6/latest/EUR")
         .then(r => r.json())
         .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
@@ -121,25 +117,89 @@ function quoteItems() {
   const boilerLines = data.boilers.map((item) => ({ ...item, qty: Number(state.quantities[item.code] || 0), type: "Kazan" })).filter((item) => item.qty > 0);
   const accessoryLines = data.accessories.map((item) => ({ ...item, qty: autoQuantity(item), type: "Aksesuar" })).filter((item) => item.qty > 0);
   return [...boilerLines, ...accessoryLines].map((item) => ({
-    ...item, sale: item.cost * (1 + margin), saleEUR: toEUR(item) * (1 + margin), costEUR: toEUR(item),
+    ...item,
+    sale:    item.cost   * (1 + margin),
+    saleEUR: toEUR(item) * (1 + margin),
+    costEUR: toEUR(item),
   }));
 }
+
+// Teklife benzersiz numara üret
+function generateTeklifNo() {
+  const now = new Date();
+  const yy = String(now.getFullYear()).slice(2);
+  const mm = String(now.getMonth()+1).padStart(2,"0");
+  const dd = String(now.getDate()).padStart(2,"0");
+  return "OFR" + yy + mm + dd + Math.floor(100 + Math.random()*900);
+}
+const TEKLIF_NO = generateTeklifNo();
 
 function renderSummary() {
   const data  = brandData();
   const rate  = getRate();
   const lines = quoteItems();
-  const totalSaleEUR = lines.reduce((s, l) => s + l.saleEUR * l.qty, 0);
-  const totalCostEUR = lines.reduce((s, l) => s + l.costEUR * l.qty, 0);
-  const profitTRY    = (totalSaleEUR - totalCostEUR) * rate;
+  const KDV_ORAN = 0.20;
+
+  // EUR bazlı satış toplamlar
+  const topSatEUR = lines.reduce((s, l) => s + l.saleEUR * l.qty, 0);
+
+  // TL karşılıkları
+  const toplamTutar = topSatEUR * rate;          // iskontosuz liste fiyatı = satış fiyatı
+  const iskonto     = 0;                          // marj zaten maliyet üzerinden, müşteriye iskonto gösterilmiyor
+  const netToplam   = toplamTutar - iskonto;
+  const kdv         = netToplam * KDV_ORAN;
+  const genelToplam = netToplam + kdv;
+
+  // Marka
   document.querySelector("#summaryBrand").textContent    = data.label;
   document.querySelector("#summaryCustomer").textContent = customer.value.trim() || "Müşteri adı girilmedi";
-  document.querySelector("#summaryProject").textContent  = project.value.trim()  || "Proje adı girilmedi";
-  document.querySelector("#salesTotal").textContent      = "€ " + fmtEUR.format(totalSaleEUR);
-  document.querySelector("#tryTotal").textContent        = fmtTRY.format(totalSaleEUR * rate);
-  document.querySelector("#profitTotal").textContent     = fmtTRY.format(profitTRY);
-  if (!lines.length) { quoteLines.innerHTML = `<div class="empty-lines">Kazan adedi girildiğinde teklif kalemleri burada oluşur.</div>`; return; }
-  quoteLines.innerHTML = lines.map((item) => `<div class="line-row"><div><strong>${item.name}</strong><span>${item.type} · ${item.code} · ${item.qty} adet</span></div><em>${fmt(item.sale * item.qty, item.sym)}</em></div>`).join("");
+  document.querySelector("#summaryProject").textContent  = project.value.trim()  || "Proje / bina adı girilmedi";
+
+  // Teklif meta
+  const teklifNoEl = document.querySelector("#teklifNo");
+  const teklifTarihEl = document.querySelector("#teklifTarih");
+  const eurKurEl = document.querySelector("#eurKurDisplay");
+  if (teklifNoEl) teklifNoEl.textContent = TEKLIF_NO;
+  if (teklifTarihEl) teklifTarihEl.textContent = new Date().toLocaleDateString("tr-TR");
+  if (eurKurEl) eurKurEl.textContent = fmtEUR.format(rate);
+
+  // Kalem listesi
+  if (!lines.length) {
+    quoteLines.innerHTML = `<div class="empty-lines">Kazan adedi girildiğinde teklif kalemleri burada oluşur.</div>`;
+  } else {
+    quoteLines.innerHTML = `
+      <table class="proforma-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Rün Adı</th>
+            <th>Miktar</th>
+            <th>Birim</th>
+            <th>Liste Fiyatı</th>
+            <th>Ara Toplam</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${lines.map((item, i) => `
+            <tr>
+              <td>${i + 1}</td>
+              <td><strong>${item.name}</strong><br><small>${item.code}</small></td>
+              <td>${item.qty}</td>
+              <td>ADET</td>
+              <td>${fmt(item.sale, item.sym)}</td>
+              <td>${fmt(item.sale * item.qty, item.sym)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>`;
+  }
+
+  // Proforma toplam satırları
+  document.querySelector("#satirToplamTutar").textContent  = fmtTRY.format(toplamTutar);
+  document.querySelector("#satirIskonto").textContent      = fmtTRY.format(iskonto);
+  document.querySelector("#satirNetToplam").textContent    = fmtTRY.format(netToplam);
+  document.querySelector("#satirKDV").textContent          = fmtTRY.format(kdv);
+  document.querySelector("#satirGenelToplam").textContent  = fmtTRY.format(genelToplam);
 }
 
 document.querySelectorAll(".segment").forEach((button) => {
@@ -160,7 +220,6 @@ document.querySelectorAll(".segment").forEach((button) => {
 
 document.querySelector("#printBtn").addEventListener("click", () => window.print());
 
-// Sayfa yüklenince TCMB'den kur çek, sonra her 30 dakikada güncelle
 fetchTCMBRate();
 setInterval(fetchTCMBRate, 30 * 60 * 1000);
 
