@@ -69,36 +69,24 @@ function brandData() { return DATA[state.brand]; }
 function getRate()   { return Number(eurRate.value || 42); }
 function totalBoilers() { return Object.values(state.quantities).reduce((s, v) => s + Number(v || 0), 0); }
 
-// TCMB XML'den EUR/TRY satiş kuru çek
+// Canlı EUR/TRY kuru çek (birincil + yedek API)
 function fetchTCMBRate() {
-  const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.tcmb.gov.tr/kurlar/today.xml");
-  fetch(proxy)
-    .then(r => r.text())
-    .then(xml => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(xml, "text/xml");
-      const nodes = doc.querySelectorAll("Currency");
-      let eurNode = null;
-      nodes.forEach(n => {
-        if (n.getAttribute("Kod") === "EUR" || n.getAttribute("CurrencyCode") === "EUR") {
-          eurNode = n;
-        }
-      });
-      if (eurNode) {
-        const selling = eurNode.querySelector("ForexSelling, BanknoteSelling");
-        if (selling) {
-          const rate = parseFloat(selling.textContent.replace(",", "."));
-          if (!isNaN(rate) && rate > 0) {
-            eurRate.value = rate.toFixed(4);
-            if (eurRateLabel) eurRateLabel.textContent = "EUR/TL (TCMB • " + new Date().toLocaleDateString("tr-TR") + ")";
-            renderSummary();
-          }
-        }
-      }
-    })
+  const label = document.querySelector("#eurRateLabel");
+  const setRate = (rate) => {
+    eurRate.value = rate.toFixed(2);
+    if (label) label.textContent = "EUR/TL (canlı • " + new Date().toLocaleTimeString("tr-TR", {hour:"2-digit",minute:"2-digit"}) + ")";
+    renderSummary();
+  };
+  // Birincil API
+  fetch("https://api.exchangerate-api.com/v4/latest/EUR")
+    .then(r => r.json())
+    .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
     .catch(() => {
-      // Hata durumunda mevcut değer kalır
-      console.warn("TCMB kuru alınamadı, mevcut değer kullanılıyor.");
+      // Yedek API
+      fetch("https://open.er-api.com/v6/latest/EUR")
+        .then(r => r.json())
+        .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
+        .catch(() => { if (label) label.textContent = "EUR/TL (manuel)"; });
     });
 }
 
