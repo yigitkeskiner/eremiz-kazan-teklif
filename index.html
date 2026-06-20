@@ -53,8 +53,15 @@ const state = { brand: "ECA", quantities: {} };
 const fmtEUR = new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const fmtTRY = new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY", minimumFractionDigits: 2 });
 
-function fmt(cost, sym) {
-  return sym === "₺" ? fmtTRY.format(cost) : "€ " + fmtEUR.format(cost);
+// Para birimine göre formatla
+function fmt(value, sym) {
+  return sym === "₺" ? fmtTRY.format(value) : "€ " + fmtEUR.format(value);
+}
+
+// Kalemin EUR maliyeti — TL olanları kura böler (toplam hesabı için)
+function toEUR(item) {
+  if (item.sym === "₺") return item.cost / getRate();
+  return item.cost;
 }
 
 const boilerList     = document.querySelector("#boilerList");
@@ -67,9 +74,10 @@ const customer       = document.querySelector("#customer");
 const project        = document.querySelector("#project");
 
 function brandData() { return DATA[state.brand]; }
+function getRate()   { return Number(eurRate.value || 42); }
 
 function totalBoilers() {
-  return Object.values(state.quantities).reduce((sum, qty) => sum + Number(qty || 0), 0);
+  return Object.values(state.quantities).reduce((s, v) => s + Number(v || 0), 0);
 }
 
 function autoQuantity(item) {
@@ -107,43 +115,38 @@ function renderBoilers() {
 
 function quoteItems() {
   const margin = Number(marginRate.value || 0) / 100;
-  const data = brandData();
+  const data   = brandData();
+
   const boilerLines = data.boilers
     .map((item) => ({ ...item, qty: Number(state.quantities[item.code] || 0), type: "Kazan" }))
     .filter((item) => item.qty > 0);
+
   const accessoryLines = data.accessories
     .map((item) => ({ ...item, qty: autoQuantity(item), type: "Aksesuar" }))
     .filter((item) => item.qty > 0);
+
   return [...boilerLines, ...accessoryLines].map((item) => ({
     ...item,
-    sale: item.cost * (1 + margin),
+    sale:    item.cost    * (1 + margin),   // kendi para biriminde satış fiyatı
+    saleEUR: toEUR(item)  * (1 + margin),   // toplam hesabı için EUR karşılığı
+    costEUR: toEUR(item),
   }));
 }
 
 function renderSummary() {
-  const data   = brandData();
-  const rate   = Number(eurRate.value || 0);
-  const lines  = quoteItems();
+  const data  = brandData();
+  const rate  = getRate();
+  const lines = quoteItems();
 
-  // EUR ve TL kalemlerini ayır
-  const eurLines = lines.filter((l) => l.sym === "€");
-  const tryLines = lines.filter((l) => l.sym === "₺");
-
-  const salesEUR = eurLines.reduce((s, l) => s + l.sale * l.qty, 0);
-  const costEUR  = eurLines.reduce((s, l) => s + l.cost * l.qty, 0);
-  const salesTRY = tryLines.reduce((s, l) => s + l.sale * l.qty, 0);
-  const costTRY  = tryLines.reduce((s, l) => s + l.cost * l.qty, 0);
-
-  // Toplam TL karşılığı (sadece referans)
-  const totalSaleTRY = salesEUR * rate + salesTRY;
-  const totalCostTRY = costEUR  * rate + costTRY;
-  const profitTRY    = totalSaleTRY - totalCostTRY;
+  const totalSaleEUR = lines.reduce((s, l) => s + l.saleEUR * l.qty, 0);
+  const totalCostEUR = lines.reduce((s, l) => s + l.costEUR * l.qty, 0);
+  const profitTRY    = (totalSaleEUR - totalCostEUR) * rate;
 
   document.querySelector("#summaryBrand").textContent    = data.label;
   document.querySelector("#summaryCustomer").textContent = customer.value.trim() || "Müşteri adı girilmedi";
   document.querySelector("#summaryProject").textContent  = project.value.trim()  || "Proje adı girilmedi";
-  document.querySelector("#salesTotal").textContent      = "€ " + fmtEUR.format(salesEUR);
-  document.querySelector("#tryTotal").textContent        = fmtTRY.format(totalSaleTRY);
+  document.querySelector("#salesTotal").textContent      = "€ " + fmtEUR.format(totalSaleEUR);
+  document.querySelector("#tryTotal").textContent        = fmtTRY.format(totalSaleEUR * rate);
   document.querySelector("#profitTotal").textContent     = fmtTRY.format(profitTRY);
 
   if (!lines.length) {
@@ -151,6 +154,7 @@ function renderSummary() {
     return;
   }
 
+  // Kalem listesi: her kalem kendi sym'iyle gösterilir
   quoteLines.innerHTML = lines.map((item) => `
     <div class="line-row">
       <div>
@@ -164,7 +168,7 @@ function renderSummary() {
 
 document.querySelectorAll(".segment").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".segment").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".segment").forEach((b) => b.classList.remove("active"));
     button.classList.add("active");
     state.brand = button.dataset.brand;
     state.quantities = {};
