@@ -8,13 +8,13 @@ const DATA = {
       { code: "DTYECA 8006723000", name: "Felis FL 150", cost: 1616.75, sym: "€" },
     ],
     accessories: [
-      { code: "DTYECAAKS 7006721314", name: "Ekranli Kaskad Kontrol Panel Grubu", cost: 101.01, sym: "€", mode: "fixed", qty: 1 },
-      { code: "DTYECAAKS 7006721570", name: "Kaskad Kontrol Modul Karti",         cost: 42.53,  sym: "€", mode: "boiler" },
-      { code: "DTYECAAKS 7006721429", name: "Dis Hava Sensoru",                   cost: 13.29,  sym: "€", mode: "fixed", qty: 1 },
-      { code: "DTYECAAKS 7006721438", name: "Kaskad Sicaklik Sensoru",            cost: 18.61,  sym: "€", mode: "fixed", qty: 1 },
-      { code: "DTYECAAKS 7006721432", name: "Boyler Sicaklik Sensoru",            cost: 10.63,  sym: "€", mode: "tank" },
-      { code: "DTYECAAKS 7006721891", name: "Primer Devre Sirk. Pompasi 100-125 kW", cost: 180.75, sym: "€", mode: "ecaPump100" },
-      { code: "DTYECAAKS 7006721892", name: "Primer Devre Sirk. Pompasi 150 kW",    cost: 212.64, sym: "€", mode: "ecaPump150" },
+      { code: "DTYECAAKS 7006721314", name: "Ekranlı Kaskad Kontrol Panel Grubu", cost: 101.01, sym: "€", mode: "fixed", qty: 1 },
+      { code: "DTYECAAKS 7006721570", name: "Kaskad Kontrol Modül Kartı",    cost: 42.53,  sym: "€", mode: "boiler" },
+      { code: "DTYECAAKS 7006721429", name: "Dış Hava Sensörü",    cost: 13.29,  sym: "€", mode: "fixed", qty: 1 },
+      { code: "DTYECAAKS 7006721438", name: "Kaskad Sıcaklık Sensörü", cost: 18.61, sym: "€", mode: "fixed", qty: 1 },
+      { code: "DTYECAAKS 7006721432", name: "Boyler Sıcaklık Sensörü", cost: 10.63, sym: "€", mode: "tank" },
+      { code: "DTYECAAKS 7006721891", name: "Primer Devre Sirk. Pompası 100-125 kW", cost: 180.75, sym: "€", mode: "ecaPump100" },
+      { code: "DTYECAAKS 7006721892", name: "Primer Devre Sirk. Pompası 150 kW",    cost: 212.64, sym: "€", mode: "ecaPump150" },
     ],
   },
   BAYMAK: {
@@ -25,12 +25,12 @@ const DATA = {
       { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW %108", cost: 1581 * 0.81, sym: "€" },
     ],
     accessories: [
-      { code: "DTYBAYAKS 60218227", name: "Kaskad Pompa EVop OEM 100/180-32",        cost: 347 * 0.81,   sym: "€", mode: "boiler" },
-      { code: "DTYBAYAKS 09120032", name: "RVS 283 Kaskad Kontrol Paneli",           cost: 14833 * 0.81, sym: "₺", mode: "fixed", qty: 1 },
-      { code: "DTYBAYAKS 16910171", name: "OCI365.03 OT/LPB Cevirici Ara B. Karti", cost: 57 * 0.81,    sym: "€", mode: "boiler" },
-      { code: "DTYBAYAKS 16900077", name: "QAD36/101 Isitma Suyu Giris Sensoru",    cost: 15 * 0.81,    sym: "€", mode: "fixed", qty: 2 },
-      { code: "DTYBAYAKS 16900066", name: "QAC34 Dis Hava Sensoru",                 cost: 11 * 0.81,    sym: "€", mode: "fixed", qty: 1 },
-      { code: "DTYBAYAKS 16910072", name: "QAZ36.522/109 Boyler Sicak Su Sensoru",  cost: 7 * 0.81,     sym: "€", mode: "tank" },
+      { code: "DTYBAYAKS 60218227", name: "Kaskad Pompa EVop OEM 100/180-32",          cost: 347 * 0.81,   sym: "€", mode: "boiler" },
+      { code: "DTYBAYAKS 09120032", name: "RVS 283 Kaskad Kontrol Paneli",             cost: 14833 * 0.81, sym: "₺", mode: "fixed", qty: 1 },
+      { code: "DTYBAYAKS 16910171", name: "OCI365.03 OT/LPB Çevirici Ara B. Kartı", cost: 57 * 0.81, sym: "€", mode: "boiler" },
+      { code: "DTYBAYAKS 16900077", name: "QAD36/101 Isıtma Suyu Gidiş Sensörü", cost: 15 * 0.81, sym: "€", mode: "fixed", qty: 2 },
+      { code: "DTYBAYAKS 16900066", name: "QAC34 Dış Hava Sensörü", cost: 11 * 0.81, sym: "€", mode: "fixed", qty: 1 },
+      { code: "DTYBAYAKS 16910072", name: "QAZ36.522/109 Boyler Sıcak Su Sensörü", cost: 7 * 0.81, sym: "€", mode: "tank" },
     ],
   },
   VAILLANT: {
@@ -40,10 +40,10 @@ const DATA = {
       { code: "ECPFTIS PLUS 150",  name: "ecoTEC fit Plus 150 kW", cost: 2344 * 0.77, sym: "€" },
     ],
     accessories: [
-      { code: "UPML XL 32-125", name: "UPML XL 32-125 Pompa",  cost: 257 * 0.77, sym: "€", mode: "boiler" },
-      { code: "VRC720",          name: "VRC720 Kontrol Cihazi", cost: 165 * 0.77, sym: "€", mode: "fixed", qty: 1 },
-      { code: "VR71",            name: "VR71 Sensor Modulu",    cost: 222 * 0.77, sym: "€", mode: "fixed", qty: 1 },
-      { code: "VR32",            name: "VR32 Uzaktan Kontrol",  cost: 45 * 0.77,  sym: "€", mode: "minusOne" },
+      { code: "UPML XL 32-125", name: "UPML XL 32-125 Pompa",      cost: 257 * 0.77, sym: "€", mode: "boiler" },
+      { code: "VRC720",          name: "VRC720 Kontrol Cihazı", cost: 165 * 0.77, sym: "€", mode: "fixed", qty: 1 },
+      { code: "VR71",            name: "VR71 Sensör Modülü", cost: 222 * 0.77, sym: "€", mode: "fixed", qty: 1 },
+      { code: "VR32",            name: "VR32 Uzaktan Kontrol",      cost: 45 * 0.77,  sym: "€", mode: "minusOne" },
     ],
   },
 };
@@ -58,6 +58,7 @@ function toEUR(item) { return item.sym === "₺" ? item.cost / getRate() : item.
 const boilerList     = document.querySelector("#boilerList");
 const quoteLines     = document.querySelector("#quoteLines");
 const eurRate        = document.querySelector("#eurRate");
+const eurRateLabel   = document.querySelector("#eurRateLabel");
 const marginRate     = document.querySelector("#marginRate");
 const hasWaterTank   = document.querySelector("#hasWaterTank");
 const waterTankCount = document.querySelector("#waterTankCount");
@@ -67,6 +68,39 @@ const project        = document.querySelector("#project");
 function brandData() { return DATA[state.brand]; }
 function getRate()   { return Number(eurRate.value || 42); }
 function totalBoilers() { return Object.values(state.quantities).reduce((s, v) => s + Number(v || 0), 0); }
+
+// TCMB XML'den EUR/TRY satiş kuru çek
+function fetchTCMBRate() {
+  const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.tcmb.gov.tr/kurlar/today.xml");
+  fetch(proxy)
+    .then(r => r.text())
+    .then(xml => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xml, "text/xml");
+      const nodes = doc.querySelectorAll("Currency");
+      let eurNode = null;
+      nodes.forEach(n => {
+        if (n.getAttribute("Kod") === "EUR" || n.getAttribute("CurrencyCode") === "EUR") {
+          eurNode = n;
+        }
+      });
+      if (eurNode) {
+        const selling = eurNode.querySelector("ForexSelling, BanknoteSelling");
+        if (selling) {
+          const rate = parseFloat(selling.textContent.replace(",", "."));
+          if (!isNaN(rate) && rate > 0) {
+            eurRate.value = rate.toFixed(4);
+            if (eurRateLabel) eurRateLabel.textContent = "EUR/TL (TCMB • " + new Date().toLocaleDateString("tr-TR") + ")";
+            renderSummary();
+          }
+        }
+      }
+    })
+    .catch(() => {
+      // Hata durumunda mevcut değer kalır
+      console.warn("TCMB kuru alınamadı, mevcut değer kullanılıyor.");
+    });
+}
 
 function autoQuantity(item) {
   const total = totalBoilers();
@@ -111,12 +145,12 @@ function renderSummary() {
   const totalCostEUR = lines.reduce((s, l) => s + l.costEUR * l.qty, 0);
   const profitTRY    = (totalSaleEUR - totalCostEUR) * rate;
   document.querySelector("#summaryBrand").textContent    = data.label;
-  document.querySelector("#summaryCustomer").textContent = customer.value.trim() || "Musteri adi girilmedi";
-  document.querySelector("#summaryProject").textContent  = project.value.trim()  || "Proje adi girilmedi";
+  document.querySelector("#summaryCustomer").textContent = customer.value.trim() || "Müşteri adı girilmedi";
+  document.querySelector("#summaryProject").textContent  = project.value.trim()  || "Proje adı girilmedi";
   document.querySelector("#salesTotal").textContent      = "€ " + fmtEUR.format(totalSaleEUR);
   document.querySelector("#tryTotal").textContent        = fmtTRY.format(totalSaleEUR * rate);
   document.querySelector("#profitTotal").textContent     = fmtTRY.format(profitTRY);
-  if (!lines.length) { quoteLines.innerHTML = `<div class="empty-lines">Kazan adedi girildiginde teklif kalemleri burada olusur.</div>`; return; }
+  if (!lines.length) { quoteLines.innerHTML = `<div class="empty-lines">Kazan adedi girildiğinde teklif kalemleri burada oluşur.</div>`; return; }
   quoteLines.innerHTML = lines.map((item) => `<div class="line-row"><div><strong>${item.name}</strong><span>${item.type} · ${item.code} · ${item.qty} adet</span></div><em>${fmt(item.sale * item.qty, item.sym)}</em></div>`).join("");
 }
 
@@ -137,5 +171,10 @@ document.querySelectorAll(".segment").forEach((button) => {
 });
 
 document.querySelector("#printBtn").addEventListener("click", () => window.print());
+
+// Sayfa yüklenince TCMB'den kur çek, sonra her 30 dakikada güncelle
+fetchTCMBRate();
+setInterval(fetchTCMBRate, 30 * 60 * 1000);
+
 renderBoilers();
 renderSummary();
