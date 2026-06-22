@@ -20,17 +20,17 @@ const DATA = {
   BAYMAK: {
     label: "Baymak",
     boilers: [
-      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW %108",  cost: 1277 * 0.81, sym: "€" },
-      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW %108",  cost: 1410 * 0.81, sym: "€" },
-      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW %108", cost: 1581 * 0.81, sym: "€" },
+      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW Duvar Tipi Yoğuşmalı",  cost: 61550,  sym: "₺" },
+      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW Duvar Tipi Yoğuşmalı",  cost: 67961,  sym: "₺" },
+      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW Duvar Tipi Yoğuşmalı", cost: 76203,  sym: "₺" },
     ],
     accessories: [
-      { code: "DTYBAYAKS 60218227", name: "Kaskad Pompa EVop OEM 100/180-32",          cost: 347 * 0.81,   sym: "€", mode: "boiler" },
-      { code: "DTYBAYAKS 09120032", name: "RVS 283 Kaskad Kontrol Paneli",             cost: 14833 * 0.81, sym: "₺", mode: "fixed", qty: 1 },
-      { code: "DTYBAYAKS 16910171", name: "OCI365.03 OT/LPB Çevirici Ara B. Kartı", cost: 57 * 0.81, sym: "€", mode: "boiler" },
-      { code: "DTYBAYAKS 16900077", name: "QAD36/101 Isıtma Suyu Gidiş Sensörü", cost: 15 * 0.81, sym: "€", mode: "fixed", qty: 2 },
-      { code: "DTYBAYAKS 16900066", name: "QAC34 Dış Hava Sensörü", cost: 11 * 0.81, sym: "€", mode: "fixed", qty: 1 },
-      { code: "DTYBAYAKS 16910072", name: "QAZ36.522/109 Boyler Sıcak Su Sensörü", cost: 7 * 0.81, sym: "€", mode: "tank" },
+      { code: "DTYBAYAKS 60218227", name: "EvoPlus 60/180 XM Frekans Kont. Pompa",          cost: 340.06,   sym: "€", mode: "boiler" },
+      { code: "DTYBAYAKS 09120032", name: "RVS 283 Kaskad Kontrol Paneli",                  cost: 14536.34, sym: "₺", mode: "fixed", qty: 1 },
+      { code: "DTYBAYAKS 16910171", name: "OCI365.03/101 OT/LPB Çevirici Ara Birim",   cost: 55.86,    sym: "€", mode: "boiler" },
+      { code: "DTYBAYAKS 16900077", name: "QAD36/101 Isıtma Suyu Gidiş Sensörü", cost: 14.70, sym: "€", mode: "fixed", qty: 2 },
+      { code: "DTYBAYAKS 16900066", name: "QAC34 Dış Hava Sensörü",     cost: 10.78,    sym: "€", mode: "fixed", qty: 1 },
+      { code: "DTYBAYAKS 16910072", name: "QAZ36.522/109 Sıcak Su Sensörü",  cost: 6.86,     sym: "€", mode: "tank" },
     ],
   },
   VAILLANT: {
