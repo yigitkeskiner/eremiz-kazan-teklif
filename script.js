@@ -48,7 +48,7 @@ const DATA = {
   },
 };
 
-const state = { brand: "ECA", quantities: {} };
+const state = { brand: "ECA", quantities: {}, accessoryOverrides: {} };
 const fmtEUR = new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const fmtTRY = new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY", minimumFractionDigits: 2 });
 
@@ -106,6 +106,7 @@ function renderBoilers() {
   boilerList.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", (e) => {
       state.quantities[e.target.dataset.code] = Math.max(0, Number(e.target.value || 0));
+      state.accessoryOverrides = {}; // kazan değişince override'ları sıfırla
       renderSummary();
     });
   });
@@ -115,7 +116,12 @@ function quoteItems() {
   const margin = Number(marginRate.value || 0) / 100;
   const data = brandData();
   const boilerLines = data.boilers.map((item) => ({ ...item, qty: Number(state.quantities[item.code] || 0), type: "Kazan" })).filter((item) => item.qty > 0);
-  const accessoryLines = data.accessories.map((item) => ({ ...item, qty: autoQuantity(item), type: "Aksesuar" })).filter((item) => item.qty > 0);
+  const accessoryLines = data.accessories.map((item) => {
+    const qty = state.accessoryOverrides[item.code] !== undefined
+      ? state.accessoryOverrides[item.code]
+      : autoQuantity(item);
+    return { ...item, qty, type: "Aksesuar" };
+  }).filter((item) => item.qty > 0);
   return [...boilerLines, ...accessoryLines].map((item) => ({
     ...item,
     sale:    item.cost   * (1 + margin),
@@ -180,18 +186,42 @@ function renderSummary() {
           </tr>
         </thead>
         <tbody>
-          ${lines.map((item, i) => `
-            <tr>
-              <td>${i + 1}</td>
-              <td><strong>${item.name}</strong><br><small>${item.code}</small></td>
-              <td>${item.qty}</td>
-              <td>ADET</td>
-              <td>${fmt(item.sale, item.sym)}</td>
-              <td>${fmt(item.sale * item.qty, item.sym)}</td>
-            </tr>
-          `).join("")}
+          ${lines.map((item, i) => {
+            const isAccessory = item.type === "Aksesuar";
+            const qtyCell = isAccessory
+              ? `<input
+                   type="number"
+                   min="0"
+                   value="${item.qty}"
+                   data-code="${item.code}"
+                   class="qty-input"
+                   aria-label="${item.name} adedi"
+                 />`
+              : item.qty;
+            return `
+              <tr>
+                <td>${i + 1}</td>
+                <td><strong>${item.name}</strong><br><small>${item.code}</small></td>
+                <td class="qty-cell">${qtyCell}</td>
+                <td>ADET</td>
+                <td>${fmt(item.sale, item.sym)}</td>
+                <td class="subtotal-cell" data-code="${item.code}">${fmt(item.sale * item.qty, item.sym)}</td>
+              </tr>
+            `;
+          }).join("")}
         </tbody>
       </table>`;
+
+    // Aksesuar adet input'larına listener ekle
+    quoteLines.querySelectorAll("input.qty-input").forEach((input) => {
+      input.addEventListener("input", (e) => {
+        const code = e.target.dataset.code;
+        const newQty = Math.max(0, Number(e.target.value || 0));
+        state.accessoryOverrides[code] = newQty;
+        // Ara toplamı ve genel toplamı güncelle
+        renderSummary();
+      });
+    });
   }
 
   // Proforma toplam satırları
@@ -208,6 +238,7 @@ document.querySelectorAll(".segment").forEach((button) => {
     button.classList.add("active");
     state.brand = button.dataset.brand;
     state.quantities = {};
+    state.accessoryOverrides = {};
     renderBoilers();
     renderSummary();
   });
