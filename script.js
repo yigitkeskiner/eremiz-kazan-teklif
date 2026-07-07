@@ -2,10 +2,10 @@ const DATA = {
   ECA: {
     label: "E.C.A",
     boilers: [
-      { code: "DTYECA 8006720000", name: "Felis FL 65",  cost: 850.57,  sym: "€" },
-      { code: "DTYECA 8006721000", name: "Felis FL 100", cost: 1123.50, sym: "€" },
-      { code: "DTYECA 8006722000", name: "Felis FL 125", cost: 1260.52, sym: "€" },
-      { code: "DTYECA 8006723000", name: "Felis FL 150", cost: 1616.75, sym: "€" },
+      { code: "DTYECA 8006720000", name: "Felis FL 65",  cost: 850.57 * 0.97,  sym: "€" }, // ek %3 indirim (sadece kazan)
+      { code: "DTYECA 8006721000", name: "Felis FL 100", cost: 1123.50 * 0.97, sym: "€" },
+      { code: "DTYECA 8006722000", name: "Felis FL 125", cost: 1260.52 * 0.97, sym: "€" },
+      { code: "DTYECA 8006723000", name: "Felis FL 150", cost: 1616.75 * 0.97, sym: "€" },
     ],
     accessories: [
       { code: "DTYECAAKS 7006721314", name: "Ekranlı Kaskad Kontrol Panel Grubu", cost: 101.01, sym: "€", mode: "fixed", qty: 1 },
@@ -20,9 +20,9 @@ const DATA = {
   BAYMAK: {
     label: "Baymak",
     boilers: [
-      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW Duvar Tipi Yoğuşmalı",  cost: 61550,  sym: "₺" },
-      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW Duvar Tipi Yoğuşmalı",  cost: 67961,  sym: "₺" },
-      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW Duvar Tipi Yoğuşmalı", cost: 76203,  sym: "₺" },
+      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW Duvar Tipi Yoğuşmalı",  cost: 50522.74, sym: "₺" },
+      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW Duvar Tipi Yoğuşmalı",  cost: 55785,    sym: "₺" },
+      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW Duvar Tipi Yoğuşmalı", cost: 62550,    sym: "₺" },
     ],
     accessories: [
       { code: "DTYBAYAKS 60218227", name: "EvoPlus 60/180 XM Frekans Kont. Pompa",          cost: 340.06,   sym: "€", mode: "boiler" },
