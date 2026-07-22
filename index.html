@@ -29,6 +29,8 @@
           <div class="rate-box">
             <label for="eurRate" id="eurRateLabel">EUR/TL (yükleniyor...)</label>
             <input id="eurRate" type="number" min="1" value="42" />
+            <label for="usdRate">USD/TL</label>
+            <input id="usdRate" type="number" min="1" value="40" />
           </div>
         </div>
 
@@ -74,6 +76,16 @@
                 Marj %
                 <input id="marginRate" type="number" min="0" max="100" value="20" />
               </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Kazan Altı Sistemi</legend>
+              <p class="eyebrow">Denge kabı önü izolasyon vanaları için:</p>
+              <div class="segmented-2" role="radiogroup" aria-label="Vana tipi secimi">
+                <button type="button" class="vana-segment active" data-vana="wafer">Wafer Kelebek Vana</button>
+                <button type="button" class="vana-segment" data-vana="kuresel">Küresel Vana</button>
+              </div>
+              <div id="kazanAltiWarnings" class="kazan-alti-warnings"></div>
             </fieldset>
           </form>
 
@@ -135,6 +147,7 @@
 
 
 
+    <script src="./kazan_alti.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

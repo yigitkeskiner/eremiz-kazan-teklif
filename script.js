@@ -2,10 +2,10 @@ const DATA = {
   ECA: {
     label: "E.C.A",
     boilers: [
-      { code: "DTYECA 8006720000", name: "Felis FL 65",  cost: 850.57 * 0.97,  sym: "€" }, // ek %3 indirim (sadece kazan)
-      { code: "DTYECA 8006721000", name: "Felis FL 100", cost: 1123.50 * 0.97, sym: "€" },
-      { code: "DTYECA 8006722000", name: "Felis FL 125", cost: 1260.52 * 0.97, sym: "€" },
-      { code: "DTYECA 8006723000", name: "Felis FL 150", cost: 1616.75 * 0.97, sym: "€" },
+      { code: "DTYECA 8006720000", name: "Felis FL 65",  cost: 850.57 * 0.97,  sym: "€", kw: 65 }, // ek %3 indirim (sadece kazan)
+      { code: "DTYECA 8006721000", name: "Felis FL 100", cost: 1123.50 * 0.97, sym: "€", kw: 100 },
+      { code: "DTYECA 8006722000", name: "Felis FL 125", cost: 1260.52 * 0.97, sym: "€", kw: 125 },
+      { code: "DTYECA 8006723000", name: "Felis FL 150", cost: 1616.75 * 0.97, sym: "€", kw: 150 },
     ],
     accessories: [
       { code: "DTYECAAKS 7006721314", name: "Ekranlı Kaskad Kontrol Panel Grubu", cost: 101.01, sym: "€", mode: "fixed", qty: 1 },
@@ -20,9 +20,9 @@ const DATA = {
   BAYMAK: {
     label: "Baymak",
     boilers: [
-      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW Duvar Tipi Yoğuşmalı",  cost: 50522.74, sym: "₺" },
-      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW Duvar Tipi Yoğuşmalı",  cost: 55785,    sym: "₺" },
-      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW Duvar Tipi Yoğuşmalı", cost: 62550,    sym: "₺" },
+      { code: "DTYBAY 10090901", name: "Baymak Lectus 65 kW Duvar Tipi Yoğuşmalı",  cost: 50522.74, sym: "₺", kw: 65 },
+      { code: "DTYBAY 10090902", name: "Baymak Lectus 90 kW Duvar Tipi Yoğuşmalı",  cost: 55785,    sym: "₺", kw: 90 },
+      { code: "DTYBAY 10090903", name: "Baymak Lectus 115 kW Duvar Tipi Yoğuşmalı", cost: 62550,    sym: "₺", kw: 115 },
     ],
     accessories: [
       { code: "DTYBAYAKS 60218227", name: "EvoPlus 60/180 XM Frekans Kont. Pompa",          cost: 340.06,   sym: "€", mode: "boiler" },
@@ -36,8 +36,8 @@ const DATA = {
   VAILLANT: {
     label: "Vaillant",
     boilers: [
-      { code: "ECOT FIT PLUS 100", name: "ecoTEC fit Plus 100 kW", cost: 2233 * 0.77, sym: "€" },
-      { code: "ECPFTIS PLUS 150",  name: "ecoTEC fit Plus 150 kW", cost: 2344 * 0.77, sym: "€" },
+      { code: "ECOT FIT PLUS 100", name: "ecoTEC fit Plus 100 kW", cost: 2233 * 0.77, sym: "€", kw: 100 },
+      { code: "ECPFTIS PLUS 150",  name: "ecoTEC fit Plus 150 kW", cost: 2344 * 0.77, sym: "€", kw: 150 },
     ],
     accessories: [
       { code: "UPML XL 32-125", name: "UPML XL 32-125 Pompa",      cost: 257 * 0.77, sym: "€", mode: "boiler" },
@@ -48,16 +48,25 @@ const DATA = {
   },
 };
 
-const state = { brand: "ECA", quantities: {}, accessoryOverrides: {} };
+const state = { brand: "ECA", quantities: {}, accessoryOverrides: {}, vanaTipi: "wafer" };
 const fmtEUR = new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const fmtTRY = new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY", minimumFractionDigits: 2 });
 
-function fmt(value, sym) { return sym === "₺" ? fmtTRY.format(value) : "€ " + fmtEUR.format(value); }
-function toEUR(item) { return item.sym === "₺" ? item.cost / getRate() : item.cost; }
+function fmt(value, sym) {
+  if (sym === "₺") return fmtTRY.format(value);
+  if (sym === "$") return "$ " + fmtEUR.format(value);
+  return "€ " + fmtEUR.format(value);
+}
+function toEUR(item) {
+  if (item.sym === "₺") return item.cost / getRate();
+  if (item.sym === "$") return item.cost * (getUsdRate() / getRate());
+  return item.cost;
+}
 
 const boilerList     = document.querySelector("#boilerList");
 const quoteLines     = document.querySelector("#quoteLines");
 const eurRate        = document.querySelector("#eurRate");
+const usdRate        = document.querySelector("#usdRate");
 const marginRate     = document.querySelector("#marginRate");
 const hasWaterTank   = document.querySelector("#hasWaterTank");
 const waterTankCount = document.querySelector("#waterTankCount");
@@ -65,23 +74,29 @@ const customer       = document.querySelector("#customer");
 const project        = document.querySelector("#project");
 
 function brandData() { return DATA[state.brand]; }
-function getRate()   { return Number(eurRate.value || 42); }
+function getRate()    { return Number(eurRate.value || 42); }
+function getUsdRate() { return Number((usdRate && usdRate.value) || 40); }
 function totalBoilers() { return Object.values(state.quantities).reduce((s, v) => s + Number(v || 0), 0); }
+function totalSystemKW() {
+  const data = brandData();
+  return data.boilers.reduce((s, item) => s + (Number(state.quantities[item.code] || 0) * (item.kw || 0)), 0);
+}
 
 function fetchTCMBRate() {
   const label = document.querySelector("#eurRateLabel");
-  const setRate = (rate) => {
-    eurRate.value = rate.toFixed(2);
+  const setRates = (eurTry, usdTry) => {
+    eurRate.value = eurTry.toFixed(2);
+    if (usdRate && usdTry) usdRate.value = usdTry.toFixed(2);
     if (label) label.textContent = "EUR/TL (canlı • " + new Date().toLocaleTimeString("tr-TR", {hour:"2-digit",minute:"2-digit"}) + ")";
     renderSummary();
   };
   fetch("https://api.exchangerate-api.com/v4/latest/EUR")
     .then(r => r.json())
-    .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
+    .then(d => { if (d.rates && d.rates.TRY > 0) setRates(d.rates.TRY, d.rates.USD > 0 ? d.rates.TRY / d.rates.USD : null); })
     .catch(() => {
       fetch("https://open.er-api.com/v6/latest/EUR")
         .then(r => r.json())
-        .then(d => { if (d.rates && d.rates.TRY > 0) setRate(d.rates.TRY); })
+        .then(d => { if (d.rates && d.rates.TRY > 0) setRates(d.rates.TRY, d.rates.USD > 0 ? d.rates.TRY / d.rates.USD : null); })
         .catch(() => { if (label) label.textContent = "EUR/TL (manuel)"; });
     });
 }
@@ -122,7 +137,19 @@ function quoteItems() {
       : autoQuantity(item);
     return { ...item, qty, type: "Aksesuar" };
   }).filter((item) => item.qty > 0);
-  return [...boilerLines, ...accessoryLines].map((item) => ({
+
+  // Kazan Altı Sistemi (marka bağımsız) — bkz. kazan_alti.js
+  const kazanAltiRaw = buildKazanAltiLines(totalBoilers(), totalSystemKW(), state.vanaTipi);
+  state.kazanAltiMissing = kazanAltiRaw.filter((l) => l.unitList == null || l.missing);
+  const kazanAltiLines = kazanAltiRaw
+    .filter((l) => l.unitList != null && l.qty > 0)
+    .map((l) => ({
+      code: l.code, name: l.name, sym: l.sym, qty: l.qty,
+      cost: l.unitList * (1 - l.iskonto),
+      type: "Kazan Altı Sistemi",
+    }));
+
+  return [...boilerLines, ...accessoryLines, ...kazanAltiLines].map((item) => ({
     ...item,
     sale:    item.cost   * (1 + margin),
     saleEUR: toEUR(item) * (1 + margin),
@@ -230,6 +257,19 @@ function renderSummary() {
   document.querySelector("#satirNetToplam").textContent    = fmtTRY.format(netToplam);
   document.querySelector("#satirKDV").textContent          = fmtTRY.format(kdv);
   document.querySelector("#satirGenelToplam").textContent  = fmtTRY.format(genelToplam);
+
+  // Kazan Altı Sistemi - eksik/varsayım uyarıları (yalnızca ekranda, yazdırmada gizli)
+  const warnBox = document.querySelector("#kazanAltiWarnings");
+  if (warnBox) {
+    const missing = state.kazanAltiMissing || [];
+    if (!missing.length) {
+      warnBox.innerHTML = "";
+    } else {
+      warnBox.innerHTML = `<strong>Kazan Altı Sistemi - kontrol edilmesi gerekenler:</strong><ul>${
+        missing.map((l) => `<li>${l.name}</li>`).join("")
+      }</ul>`;
+    }
+  }
 }
 
 document.querySelectorAll(".segment").forEach((button) => {
@@ -244,7 +284,16 @@ document.querySelectorAll(".segment").forEach((button) => {
   });
 });
 
-[eurRate, marginRate, hasWaterTank, waterTankCount, customer, project].forEach((el) => {
+document.querySelectorAll(".vana-segment").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".vana-segment").forEach((b) => b.classList.remove("active"));
+    button.classList.add("active");
+    state.vanaTipi = button.dataset.vana;
+    renderSummary();
+  });
+});
+
+[eurRate, usdRate, marginRate, hasWaterTank, waterTankCount, customer, project].filter(Boolean).forEach((el) => {
   el.addEventListener("input", renderSummary);
   el.addEventListener("change", renderSummary);
 });

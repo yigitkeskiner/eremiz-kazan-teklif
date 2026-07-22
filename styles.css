@@ -437,6 +437,48 @@ label:last-child {
   font-weight: 800;
 }
 
+.segmented-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.vana-segment {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vana-segment.active {
+  border-color: var(--aqua);
+  background: var(--aqua);
+  color: #082322;
+  font-weight: 800;
+}
+
+.kazan-alti-warnings {
+  font-size: 0.85rem;
+  color: #ffb020;
+  background: rgba(255, 176, 32, 0.1);
+  border: 1px solid rgba(255, 176, 32, 0.35);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 8px;
+}
+
+.kazan-alti-warnings ul {
+  margin: 4px 0 0 18px;
+  padding: 0;
+}
+
+@media print {
+  .kazan-alti-warnings { display: none; }
+}
+
 .item-list {
   display: grid;
   gap: 10px;
