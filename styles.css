@@ -918,7 +918,13 @@ label:last-child {
   .quote-heading,
   .rate-box { display: none !important; }
   .quote-shell { display: block !important; }
-  .summary-panel { box-shadow: none; border: 1px solid #ddd; }
+  .summary-panel { box-shadow: none; border: 1px solid #ddd; overflow: visible !important; }
+  .quote-lines {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .proforma-table { page-break-inside: auto; }
+  .proforma-table tr { page-break-inside: avoid; }
 }
 
 /* Aksesuar adet input - teklif tablosu */
