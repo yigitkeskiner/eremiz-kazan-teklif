@@ -30,23 +30,33 @@ const EMNIYET_VENTILI_SABIT_AYARLI = [
 // Büyük kazanlarda (>1") bu aile yetersiz kalabilir — teyit gerekir.
 
 // --- 3) Denge Kabı — Sancak (S2620 Kaynak Boyunlu, kapasiteye göre) ---
-// KAPSAM: 29-394 kW arası teyitli. 395-899 kW arası veri eksik (Sancak kataloğunda bu aralık ayrıca doğrulanmalı).
+// KAPSAM: 29 kW - 7000+ kW tam tablo (Sancak sayfa 21/22, OCR ile dogrulandi). Bosluk yok.
 const DENGE_KABI_TABLE = [
-  { minKW: 29,  maxKW: 42,  dn: 32,  kod: "S2620", fiyat: 2316 },
-  { minKW: 43,  maxKW: 57,  dn: 40,  kod: "S2620", fiyat: 2838 },
-  { minKW: 58,  maxKW: 107, dn: 50,  kod: "S2620", fiyat: 4439 },
-  { minKW: 108, maxKW: 129, dn: 65,  kod: "S2620", fiyat: 5029 },
-  { minKW: 130, maxKW: 196, dn: 65,  kod: "S2620", fiyat: 6618 },
-  { minKW: 197, maxKW: 260, dn: 80,  kod: "S2620", fiyat: 9628 },
-  { minKW: 261, maxKW: 394, dn: 100, kod: "S2620", fiyat: 11578 },
-  // 395-899 kW: ARAŞTIRMA GEREKİYOR
-  { minKW: 900, maxKW: 1299, dn: 150, kod: "S2620", fiyat: null }, // fiyat teyit edilemedi (sayfa okuma sırasında net görülemedi)
+  { minKW: 29,   maxKW: 42,   dn: 32,  kod: "S2620", fiyat: 2316 },
+  { minKW: 43,   maxKW: 57,   dn: 40,  kod: "S2620", fiyat: 2838 },
+  { minKW: 58,   maxKW: 107,  dn: 50,  kod: "S2620", fiyat: 4439 },
+  { minKW: 108,  maxKW: 129,  dn: 65,  kod: "S2620", fiyat: 5029 },
+  { minKW: 130,  maxKW: 196,  dn: 65,  kod: "S2620", fiyat: 6618 },
+  { minKW: 197,  maxKW: 260,  dn: 80,  kod: "S2620", fiyat: 9628 },
+  { minKW: 261,  maxKW: 394,  dn: 100, kod: "S2620", fiyat: 11578 },
+  { minKW: 395,  maxKW: 899,  dn: 125, kod: "S2620", fiyat: 24535 }, // önceden eksikti - Sancak sayfa 21/22 OCR ile teyit edildi
+  { minKW: 900,  maxKW: 1299, dn: 150, kod: "S2620", fiyat: 33589 },
+  { minKW: 1300, maxKW: 1749, dn: 150, kod: "S2620", fiyat: 38130 },
+  { minKW: 1750, maxKW: 2499, dn: 200, kod: "S2620", fiyat: 48471 },
+  { minKW: 2500, maxKW: 2999, dn: 200, kod: "S2620", fiyat: 55110 },
+  { minKW: 3000, maxKW: 3499, dn: 200, kod: "S2620", fiyat: 65295 },
+  { minKW: 3500, maxKW: 3999, dn: 250, kod: "S2620", fiyat: 87238 },
+  { minKW: 4000, maxKW: 4999, dn: 250, kod: "S2620", fiyat: 100411 },
+  { minKW: 5000, maxKW: 5499, dn: 250, kod: "S2620", fiyat: 129930 },
+  { minKW: 5500, maxKW: 5999, dn: 300, kod: "S2620", fiyat: 151961 },
+  { minKW: 6000, maxKW: 6999, dn: 300, kod: "S2620", fiyat: 193129 },
+  { minKW: 7000, maxKW: 999999, dn: 300, kod: "S2620", fiyat: 229116 },
 ];
 
 // --- 4) Tortu Pislik Hava Ayırıcı (Akuple, tek gövdede birleşik) — Sancak S2500 (Dişli ve Kaynak Boyunlu), DN'ye göre ---
 // Not: Denge Kabı ile "aynı boyutta" olacağı için DN, DENGE_KABI_TABLE'dan gelen dn değeriyle eşleştirilir.
 const TORTU_PISLIK_HAVA_AYIRICI_TABLE = {
-  20: 3146, 25: 3209, 32: 3270 /* son hane teyit edilemedi, ~3270 */, 40: 4219,
+  20: 3146, 25: 3209, 32: 3274, 40: 4219,
   50: 5062, 65: 6002, 80: 8022, 100: 11529, 125: 16675, 150: 18649, 200: 34963, 250: 41416, 300: 58879,
 };
 
