@@ -460,6 +460,28 @@ label:last-child {
   font-weight: 800;
 }
 
+.ekmalzeme-segment {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ekmalzeme-segment.active {
+  border-color: var(--aqua);
+  background: var(--aqua);
+  color: #082322;
+  font-weight: 800;
+}
+
+.kazan-alti-detay {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .kazan-alti-warnings {
   font-size: 0.85rem;
   color: #ffb020;

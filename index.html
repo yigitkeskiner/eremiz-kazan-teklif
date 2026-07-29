@@ -80,12 +80,19 @@
 
             <fieldset>
               <legend>Kazan Altı Sistemi</legend>
-              <p class="eyebrow">Denge kabı önü izolasyon vanaları için:</p>
-              <div class="segmented-2" role="radiogroup" aria-label="Vana tipi secimi">
-                <button type="button" class="vana-segment active" data-vana="wafer">Wafer Kelebek Vana</button>
-                <button type="button" class="vana-segment" data-vana="kuresel">Küresel Vana</button>
+              <p class="eyebrow">Ek malzeme (Kazan Altı Sistemi) eklemek ister misiniz?</p>
+              <div class="segmented-2" role="radiogroup" aria-label="Ek malzeme secimi">
+                <button type="button" class="ekmalzeme-segment" data-ekmalzeme="evet">Evet</button>
+                <button type="button" class="ekmalzeme-segment active" data-ekmalzeme="hayir">Hayır</button>
               </div>
-              <div id="kazanAltiWarnings" class="kazan-alti-warnings"></div>
+              <div id="kazanAltiDetay" class="kazan-alti-detay" hidden>
+                <p class="eyebrow">Denge kabı önü izolasyon vanaları için:</p>
+                <div class="segmented-2" role="radiogroup" aria-label="Vana tipi secimi">
+                  <button type="button" class="vana-segment active" data-vana="wafer">Wafer Kelebek Vana</button>
+                  <button type="button" class="vana-segment" data-vana="kuresel">Küresel Vana</button>
+                </div>
+                <div id="kazanAltiWarnings" class="kazan-alti-warnings"></div>
+              </div>
             </fieldset>
           </form>
 

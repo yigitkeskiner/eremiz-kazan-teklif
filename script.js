@@ -48,7 +48,7 @@ const DATA = {
   },
 };
 
-const state = { brand: "ECA", quantities: {}, accessoryOverrides: {}, vanaTipi: "wafer" };
+const state = { brand: "ECA", quantities: {}, accessoryOverrides: {}, vanaTipi: "wafer", ekMalzemeIstiyor: false };
 const fmtEUR = new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const fmtTRY = new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY", minimumFractionDigits: 2 });
 
@@ -139,15 +139,20 @@ function quoteItems() {
   }).filter((item) => item.qty > 0);
 
   // Kazan Altı Sistemi (marka bağımsız) — bkz. kazan_alti.js
-  const kazanAltiRaw = buildKazanAltiLines(totalBoilers(), totalSystemKW(), state.vanaTipi);
-  state.kazanAltiMissing = kazanAltiRaw.filter((l) => l.unitList == null || l.missing);
-  const kazanAltiLines = kazanAltiRaw
-    .filter((l) => l.unitList != null && l.qty > 0)
-    .map((l) => ({
-      code: l.code, name: l.name, sym: l.sym, qty: l.qty,
-      cost: l.unitList * (1 - l.iskonto),
-      type: "Kazan Altı Sistemi",
-    }));
+  // Kullanıcı "Ek malzeme istiyor musunuz?" sorusuna "Evet" demediği sürece otomatik eklenmez.
+  let kazanAltiLines = [];
+  state.kazanAltiMissing = [];
+  if (state.ekMalzemeIstiyor) {
+    const kazanAltiRaw = buildKazanAltiLines(totalBoilers(), totalSystemKW(), state.vanaTipi);
+    state.kazanAltiMissing = kazanAltiRaw.filter((l) => l.unitList == null || l.missing);
+    kazanAltiLines = kazanAltiRaw
+      .filter((l) => l.unitList != null && l.qty > 0)
+      .map((l) => ({
+        code: l.code, name: l.name, sym: l.sym, qty: l.qty,
+        cost: l.unitList * (1 - l.iskonto),
+        type: "Kazan Altı Sistemi",
+      }));
+  }
 
   return [...boilerLines, ...accessoryLines, ...kazanAltiLines].map((item) => ({
     ...item,
@@ -280,6 +285,17 @@ document.querySelectorAll(".segment").forEach((button) => {
     state.quantities = {};
     state.accessoryOverrides = {};
     renderBoilers();
+    renderSummary();
+  });
+});
+
+document.querySelectorAll(".ekmalzeme-segment").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".ekmalzeme-segment").forEach((b) => b.classList.remove("active"));
+    button.classList.add("active");
+    state.ekMalzemeIstiyor = button.dataset.ekmalzeme === "evet";
+    const detay = document.querySelector("#kazanAltiDetay");
+    if (detay) detay.hidden = !state.ekMalzemeIstiyor;
     renderSummary();
   });
 });
