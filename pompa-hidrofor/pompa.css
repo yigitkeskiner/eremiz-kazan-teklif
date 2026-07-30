@@ -1,4 +1,28 @@
 /* Pompa & Hidrofor sayfasi - ek stiller (styles.css ile birlikte yuklenir) */
+/* styles.css'teki fieldset/legend/label/eyebrow renkleri, ana sayfadaki KOYU
+   zeminli "quote-section" icin tasarlanmisti. Bu sayfa acik zeminli oldugu
+   icin okunabilirlik adina bu elemanlari burada acikca koyu renge donduruyoruz. */
+main#top legend {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+main#top label {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+main#top fieldset {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.quote-heading .eyebrow {
+  color: var(--deep);
+}
 
 .ph-disclaimer {
   margin-top: 10px;
