@@ -153,6 +153,11 @@ input {
   background: var(--soft);
 }
 
+.nav a.active {
+  color: var(--deep);
+  background: var(--soft);
+}
+
 .header-action,
 .primary-btn {
   border: 1px solid var(--deep);

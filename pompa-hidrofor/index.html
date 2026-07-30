@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Erem Group marka bagimsiz pompa ve hidrofor on secim araci." />
+    <title>Erem Group | Pompa &amp; Hidrofor Secimi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/pompa-hidrofor/pompa.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Erem Group ana sayfa">
+        <img src="/logo_dark.png" alt="Erem Group" style="height:40px;display:block;" />
+      </a>
+      <nav class="nav" aria-label="Ana menü">
+        <a href="/#teklif">Kazan Teklifi</a>
+        <a href="/pompa-hidrofor" class="active">Pompa &amp; Hidrofor</a>
+      </nav>
+      <a class="header-action" href="#sonuclar">Sonuca Git</a>
+    </header>
+
+    <main id="top">
+      <section class="section quote-section">
+        <div class="quote-heading">
+          <div>
+            <p class="eyebrow">Pompa &amp; Hidrofor Seçim Aracı</p>
+            <h2>Marka bağımsız Q/H hesabı ve ürün eşleştirme ile ön seçim &amp; teklif çıktısı.</h2>
+          </div>
+        </div>
+        <p class="ph-disclaimer">
+          Bu araç, tarafımıza iletilen bilgilere göre <strong>ön seçim</strong> üretir. Nihai seçim için saha şartları,
+          tesisat kayıpları, depo konumu, şebeke basıncı, akışkan tipi ve proje değerleri kontrol edilmelidir.
+          Boş bırakılan alanlarda sistem varsayım kullanır; kullanılan varsayımlar ilgili alanın altında belirtilir.
+          <strong>Ürün/fiyat veritabanı örnek veridir</strong> — gerçek marka, model ve fiyat listesiyle değiştirilmeden
+          müşteriye teklif verilmemelidir.
+        </p>
+      </section>
+
+      <section class="section quote-section">
+        <form id="phForm">
+          <div class="ph-grid ph-two-col">
+            <fieldset>
+              <legend>Müşteri / Proje Bilgisi (opsiyonel)</legend>
+              <label>
+                Müşteri adı
+                <input id="customerName" type="text" placeholder="Müşteri adı" />
+              </label>
+              <label>
+                Proje adı
+                <input id="projectName" type="text" placeholder="Proje adı" />
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Pompa Kategorisi</legend>
+              <label>
+                Kategori
+                <select id="category"></select>
+              </label>
+              <div id="categoryWarning" class="ph-banner ph-banner-danger ph-hidden"></div>
+            </fieldset>
+          </div>
+
+          <!-- HİDROFOR PANELİ -->
+          <fieldset id="panel-hidrofor" class="ph-hidden">
+            <legend>Hidrofor / Basınçlandırma Girdileri</legend>
+            <div class="ph-grid ph-three-col">
+              <label class="ph-field">Daire / kullanıcı sayısı
+                <input id="h_daireSayisi" type="number" min="0" />
+              </label>
+              <label class="ph-field">Kişi / daire
+                <input id="h_kisiDaire" type="number" min="0" placeholder="Varsayım: 4" />
+                <span class="ph-field-hint">Varsayım: 4 kişi/daire</span>
+              </label>
+              <label class="ph-field">Günlük tüketim (L/kişi·gün)
+                <input id="h_tuketim" type="number" min="0" placeholder="Varsayım: 150" />
+                <span class="ph-field-hint">Varsayım: 150 L/kişi·gün</span>
+              </label>
+              <label class="ph-field">Eş kullanım (pik saat) katsayısı
+                <input id="h_esKullanim" type="number" step="0.01" min="0" placeholder="Varsayım: 0,08" />
+                <span class="ph-field-hint">Varsayım: 0,08 (pik saatte çekilen oran)</span>
+              </label>
+              <label class="ph-field">Kat sayısı
+                <input id="h_katSayisi" type="number" min="0" />
+              </label>
+              <label class="ph-field">Kat yüksekliği (m)
+                <input id="h_katYuksekligi" type="number" step="0.1" min="0" placeholder="Varsayım: 3" />
+                <span class="ph-field-hint">Varsayım: 3 m</span>
+              </label>
+              <label class="ph-field">Şebeke basıncı (bar)
+                <input id="h_sebekeBasinc" type="number" step="0.1" placeholder="Bilinmiyorsa boş bırakın (0 kabul edilir)" />
+                <span class="ph-field-hint">Bilinmiyorsa boş bırakın → 0 kabul edilir</span>
+              </label>
+              <label class="ph-field">İstenen üst kat basıncı (bar)
+                <input id="h_istenenBasinc" type="number" step="0.1" placeholder="Varsayım: 2" />
+                <span class="ph-field-hint">Varsayım: 2 bar</span>
+              </label>
+              <label class="ph-field">Tesisat kaybı (mSS)
+                <input id="h_tesisatKaybi" type="number" step="0.1" placeholder="Varsayım: 5" />
+                <span class="ph-field-hint">Varsayım: 5 mSS</span>
+              </label>
+              <label class="ph-field">Emiş kaybı (mSS)
+                <input id="h_emisKaybi" type="number" step="0.1" placeholder="Varsayım: 2" />
+                <span class="ph-field-hint">Varsayım: 2 mSS</span>
+              </label>
+              <label class="ph-field">Depo konumu
+                <select id="h_depoKonum"><option value="">Belirtilmedi</option></select>
+              </label>
+              <label class="ph-field">Frekans kontrollü isteniyor mu?
+                <select id="h_frekansIstek"></select>
+              </label>
+            </div>
+            <div id="hidroforOutput" class="ph-output"></div>
+          </fieldset>
+
+          <!-- SİRKÜLASYON PANELİ -->
+          <fieldset id="panel-sirkulasyon" class="ph-hidden">
+            <legend>Sirkülasyon / Isıtma Devresi Girdileri</legend>
+            <div class="ph-grid ph-three-col">
+              <label class="ph-field">Isıtma kapasitesi (kW)
+                <input id="s_kapasite" type="number" min="0" />
+              </label>
+              <label class="ph-field">ΔT – gidiş/dönüş farkı (°C)
+                <input id="s_deltaT" type="number" step="0.1" placeholder="Varsayım: 20" />
+                <span class="ph-field-hint">Radyatör ≈ 20, yerden ısıtma ≈ 8-10, fan coil ≈ 10</span>
+              </label>
+              <label class="ph-field">Tesisat kaybı (mSS)
+                <input id="s_tesisatKaybi" type="number" step="0.1" placeholder="Varsayım: 0" />
+              </label>
+              <label class="ph-field">Kazan/eşanjör kaybı (mSS)
+                <input id="s_esanjorKaybi" type="number" step="0.1" placeholder="Varsayım: 4,5" />
+              </label>
+              <label class="ph-field">Vana + armatür kaybı (mSS)
+                <input id="s_vanaKaybi" type="number" step="0.1" placeholder="Varsayım: 1" />
+              </label>
+              <label class="ph-field">Kolektör kaybı (mSS)
+                <input id="s_kolektorKaybi" type="number" step="0.1" placeholder="Varsayım: 0,5" />
+              </label>
+              <label class="ph-field">Emniyet payı (mSS)
+                <input id="s_emniyetPayi" type="number" step="0.1" placeholder="Varsayım: 1" />
+              </label>
+              <label class="ph-field">Frekans kontrollü isteniyor mu?
+                <select id="s_frekansIstek"></select>
+              </label>
+            </div>
+            <div id="sirkulasyonOutput" class="ph-output"></div>
+            <div id="alarkoOutput" class="ph-output"></div>
+          </fieldset>
+
+          <!-- KAZAN DAİRESİ PANELİ -->
+          <fieldset id="panel-kazan" class="ph-hidden">
+            <legend>Kazan Dairesi Pompası Girdileri</legend>
+            <div class="ph-grid ph-three-col">
+              <label class="ph-field">Kazan kapasitesi (kW)
+                <input id="k_kapasite" type="number" min="0" />
+              </label>
+              <label class="ph-field">ΔT (°C)
+                <input id="k_deltaT" type="number" step="0.1" placeholder="Varsayım: 20" />
+              </label>
+              <label class="ph-field">Glikol oranı (%)
+                <input id="k_glikol" type="number" step="1" placeholder="Yoksa 0" />
+              </label>
+              <label class="ph-field">Tesisat kaybı (mSS)
+                <input id="k_tesisatKaybi" type="number" step="0.1" placeholder="Varsayım: 4" />
+              </label>
+              <label class="ph-field">Ekipman kaybı (mSS)
+                <input id="k_ekipmanKaybi" type="number" step="0.1" placeholder="Varsayım: 2" />
+              </label>
+              <label class="ph-field">Emniyet payı (mSS)
+                <input id="k_emniyetPayi" type="number" step="0.1" placeholder="Varsayım: 1" />
+              </label>
+            </div>
+            <div id="kazanOutput" class="ph-output"></div>
+          </fieldset>
+
+          <!-- MANUEL / DİĞER KATEGORİ PANELİ -->
+          <fieldset id="panel-manuel" class="ph-hidden">
+            <legend>Q / H Değerleri</legend>
+            <p class="ph-field-hint">Bu kategori için V1'de otomatik hesap modülü yoktur; Q ve H değerlerini elle girin.</p>
+            <div class="ph-grid ph-two-col">
+              <label class="ph-field">Q (m³/h)
+                <input id="m_Q" type="number" step="0.01" min="0" />
+              </label>
+              <label class="ph-field">H (mSS)
+                <input id="m_H" type="number" step="0.1" min="0" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Eşleştirme Kriterleri</legend>
+            <div class="ph-grid ph-three-col">
+              <label class="ph-field">Manuel Q (isteğe bağlı, otomatik değeri ezer)
+                <input id="matchQ" type="number" step="0.01" min="0" />
+              </label>
+              <label class="ph-field">Manuel H (isteğe bağlı, otomatik değeri ezer)
+                <input id="matchH" type="number" step="0.1" min="0" />
+              </label>
+              <label class="ph-field">Pompa tipi tercihi (opsiyonel)
+                <select id="matchPumpType"><option value="">Farketmez</option></select>
+              </label>
+              <label class="ph-field">Frekans isteği
+                <select id="matchFreq"></select>
+              </label>
+              <label class="ph-field">Elektrik beslemesi
+                <select id="matchElectric"></select>
+              </label>
+              <label class="ph-field">Sıvı sıcaklığı (°C, opsiyonel)
+                <input id="matchTemp" type="number" step="1" />
+              </label>
+              <label class="ph-field">Marka tercihi
+                <select id="matchBrand"></select>
+              </label>
+            </div>
+            <button type="button" id="runMatchBtn" class="primary-btn">Ürünleri Eşleştir ve Sırala</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="sonuclar" class="section quote-section">
+        <div class="quote-heading">
+          <div>
+            <p class="eyebrow">Sonuçlar</p>
+            <h2>Ön seçim ve teklif çıktısı</h2>
+          </div>
+        </div>
+        <div id="resultsArea">
+          <p class="ph-field-hint">Önce yukarıdaki bilgileri doldurup "Ürünleri Eşleştir ve Sırala" butonuna basın.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/pompa-hidrofor/data.js"></script>
+    <script src="/pompa-hidrofor/script.js"></script>
+  </body>
+</html>

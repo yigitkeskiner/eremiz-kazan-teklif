@@ -1,0 +1,294 @@
+/* Pompa & Hidrofor sayfasi - ek stiller (styles.css ile birlikte yuklenir) */
+
+.ph-disclaimer {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.ph-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.ph-two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ph-three-col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .ph-two-col,
+  .ph-three-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ph-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ph-field input,
+.ph-field select {
+  font-weight: 500;
+}
+
+.ph-field-hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.ph-hidden {
+  display: none !important;
+}
+
+.ph-output {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.ph-kv {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 10px 18px;
+  padding: 14px 16px;
+  background: var(--shade);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.ph-kv div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13.5px;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 6px;
+}
+
+.ph-kv div:last-child,
+.ph-kv div:nth-last-child(2) {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ph-kv span {
+  color: var(--muted);
+}
+
+.ph-kv strong {
+  text-align: right;
+}
+
+.ph-banner {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.ph-banner-warn {
+  background: #fff4e0;
+  border: 1px solid #f0c987;
+  color: #7a5300;
+}
+
+.ph-banner-info {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.ph-banner-danger {
+  background: #fdecec;
+  border: 1px solid #f3b7b7;
+  color: #8a1f1f;
+}
+
+.ph-banner-ok {
+  background: #e9f8ee;
+  border: 1px solid #a9e0bc;
+  color: #175c31;
+}
+
+.ph-risk-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.ph-risk-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--line);
+  background: var(--shade);
+}
+
+.ph-risk-DUSUK { background: #e9f8ee; border-color: #a9e0bc; color: #175c31; }
+.ph-risk-ORTA { background: #fff4e0; border-color: #f0c987; color: #7a5300; }
+.ph-risk-YUKSEK { background: #fdecec; border-color: #f3b7b7; color: #8a1f1f; }
+
+.ph-reco-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+@media (max-width: 900px) {
+  .ph-reco-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ph-reco-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ph-reco-tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--soft);
+  color: var(--deep);
+}
+
+.ph-reco-tag.economic { background: #e9f8ee; color: #175c31; }
+.ph-reco-tag.premium { background: #efe8fb; color: #5a2ea6; }
+
+.ph-reco-model {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.ph-reco-brand {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.ph-reco-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  border-top: 1px dashed var(--line);
+  padding-top: 6px;
+}
+
+.ph-reco-line span { color: var(--muted); }
+
+.ph-reco-score {
+  margin-top: 4px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.ph-reco-score > i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--aqua), var(--deep));
+}
+
+.ph-commercial {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: var(--shade);
+}
+
+.ph-commercial h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.ph-commercial .ph-grid {
+  margin-top: 0;
+}
+
+.ph-table-wrap {
+  margin-top: 20px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.ph-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 920px;
+}
+
+.ph-table th,
+.ph-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.ph-table thead th {
+  background: var(--shade);
+  position: sticky;
+  top: 0;
+}
+
+.ph-table tbody tr:nth-child(even) {
+  background: rgba(238, 247, 246, 0.4);
+}
+
+.ph-table tr.ph-row-elendi {
+  opacity: 0.55;
+}
+
+.ph-badge {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ph-badge-uygun { background: #e9f8ee; color: #175c31; }
+.ph-badge-elendi { background: #fdecec; color: #8a1f1f; }
+
+.ph-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: var(--soft);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
