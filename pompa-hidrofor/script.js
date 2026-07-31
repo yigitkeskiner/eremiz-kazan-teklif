@@ -68,7 +68,6 @@
   }
 
   // ---------- 2A HIDROFOR ----------
-  // H (mSS) hesabi basitlestirildi: H = (0,2 x kat sayisi) + 5
   function calcHidrofor() {
     var daire = num("h_daireSayisi");
     var kisi = num("h_kisiDaire");
@@ -78,11 +77,21 @@
     var esKullanim = num("h_esKullanim");
     var esKullanimUsed = esKullanim === null ? 0.08 : esKullanim;
     var katSayisi = num("h_katSayisi");
+    var katYuksekligi = num("h_katYuksekligi");
+    var katYuksekligiUsed = katYuksekligi === null ? 3 : katYuksekligi;
+    var sebekeBasinc = num("h_sebekeBasinc");
+    var sebekeBasincUsed = sebekeBasinc === null ? 0 : sebekeBasinc;
+    var istenenBasinc = num("h_istenenBasinc");
+    var istenenBasincUsed = istenenBasinc === null ? 2 : istenenBasinc;
+    var tesisatKaybi = num("h_tesisatKaybi");
+    var tesisatKaybiUsed = tesisatKaybi === null ? 5 : tesisatKaybi;
+    var emisKaybi = num("h_emisKaybi");
+    var emisKaybiUsed = emisKaybi === null ? 2 : emisKaybi;
     var depoKonum = str("h_depoKonum");
     var frekansIstek = str("h_frekansIstek");
 
     var warnings = [];
-    var gunlukIhtiyac = null, Q = null, H = null;
+    var gunlukIhtiyac = null, Q = null, geometrik = null, H = null;
 
     if (daire === null) {
       warnings.push({ type: "warn", text: "⚠ Daire/kullanıcı sayısı girilmeden debi hesaplanamaz." });
@@ -92,11 +101,15 @@
     }
 
     if (katSayisi === null) {
-      warnings.push({ type: "warn", text: "⚠ Bina kaç katlı girilmeden hidrofor seçimi yapılamaz." });
+      warnings.push({ type: "warn", text: "⚠ Kat sayısı girilmeden hidrofor seçimi yapılamaz." });
     } else {
-      H = round(0.2 * katSayisi + 5, 1);
+      geometrik = katSayisi * katYuksekligiUsed;
+      H = round(geometrik + istenenBasincUsed * 10 + tesisatKaybiUsed + emisKaybiUsed - sebekeBasincUsed * 10, 0);
     }
 
+    if (sebekeBasinc === null) {
+      warnings.push({ type: "info", text: "ℹ Şebeke basıncı bilinmiyor → 0 kabul edilmiştir (teklif notuna ekleyin)." });
+    }
     if (!depoKonum) {
       warnings.push({ type: "info", text: "ℹ Depo konumu belirtilmedi; emiş şartı sahada doğrulanmalıdır." });
     }
@@ -118,7 +131,7 @@
     var teklifVerilebilir = (Q === null || H === null) ? "HAYIR – Q/H yok (Kural 1)" : "EVET – ön seçim yapılabilir";
 
     return {
-      gunlukIhtiyac: gunlukIhtiyac, Q: Q, H: H,
+      gunlukIhtiyac: gunlukIhtiyac, Q: Q, geometrik: geometrik, H: H,
       sistemOnerisi: sistemOnerisi, frekansOnerisi: frekansOnerisi,
       warnings: warnings, teklifVerilebilir: teklifVerilebilir
     };
@@ -131,6 +144,7 @@
     html += '<div class="ph-kv">';
     html += kvRow("Günlük ihtiyaç (m³/gün)", fmt(r.gunlukIhtiyac));
     html += kvRow("Q – Hesaplanan debi (m³/h)", fmt(r.Q));
+    html += kvRow("Geometrik yükseklik (mSS)", fmt(r.geometrik));
     html += kvRow("H – Basma yüksekliği (mSS)", fmt(r.H));
     html += kvRow("Önerilen sistem", r.sistemOnerisi || "—");
     html += kvRow("Frekans önerisi", r.frekansOnerisi || "—");
@@ -140,20 +154,12 @@
   }
 
   // ---------- 2B SIRKULASYON ----------
+  // H (mSS) hesabi basitlestirildi: H = (0,2 x kat sayisi) + 5
   function calcSirkulasyon() {
     var kapasite = num("s_kapasite");
     var deltaT = num("s_deltaT");
     var deltaTUsed = deltaT === null ? 20 : deltaT;
-    var tesisatKaybi = num("s_tesisatKaybi");
-    var tesisatKaybiUsed = tesisatKaybi === null ? 0 : tesisatKaybi;
-    var esanjorKaybi = num("s_esanjorKaybi");
-    var esanjorKaybiUsed = esanjorKaybi === null ? 4.5 : esanjorKaybi;
-    var vanaKaybi = num("s_vanaKaybi");
-    var vanaKaybiUsed = vanaKaybi === null ? 1 : vanaKaybi;
-    var kolektorKaybi = num("s_kolektorKaybi");
-    var kolektorKaybiUsed = kolektorKaybi === null ? 0.5 : kolektorKaybi;
-    var emniyetPayi = num("s_emniyetPayi");
-    var emniyetPayiUsed = emniyetPayi === null ? 1 : emniyetPayi;
+    var katSayisi = num("s_katSayisi");
 
     var warnings = [];
     var Q = null, H = null;
@@ -166,13 +172,14 @@
     } else {
       Q = round(0.86 * kapasite / deltaTUsed, 2);
     }
-    H = round(tesisatKaybiUsed + esanjorKaybiUsed + vanaKaybiUsed + kolektorKaybiUsed + emniyetPayiUsed, 1);
 
-    if (tesisatKaybi === null && kapasite !== null) {
-      warnings.push({ type: "info", text: "ℹ Tesisat kaybı boş bırakılırsa 0 mSS varsayılır; gerekirse manuel girin." });
+    if (katSayisi === null) {
+      warnings.push({ type: "warn", text: "⚠ Bina kaç katlı girilmeden H hesaplanamaz." });
+    } else {
+      H = round(0.2 * katSayisi + 5, 1);
     }
 
-    var teklifVerilebilir = (Q === null) ? "HAYIR – Q yok (Kural 1)" : "EVET – ön seçim yapılabilir";
+    var teklifVerilebilir = (Q === null || H === null) ? "HAYIR – Q/H yok (Kural 1)" : "EVET – ön seçim yapılabilir";
 
     return { Q: Q, H: H, warnings: warnings, teklifVerilebilir: teklifVerilebilir };
   }
