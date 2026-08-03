@@ -10,6 +10,7 @@
   var CURVES = window.ALARKO_CURVES || [];
   var REGIONS = window.ALARKO_REGIONS || [];
   var BAYMAK = window.BAYMAK_TABLES || {};
+  var EVOPLUS_B_CURVES = window.EVOPLUS_B_CURVES || [];
   var LISTS = window.PUMP_LISTS || {};
 
   var NO_CALC_CATEGORIES = ["Yangın pompası", "Endüstriyel pompa"];
@@ -313,6 +314,62 @@
     el.innerHTML = html;
   }
 
+  // ---------- EVOPLUS B resmi secim abagi (H-Q egrisi, dogrusal interpolasyon) ----------
+  // "evoplus secim abagi.xlsx" kaynagindaki 20 modelin gercek performans
+  // egrisidir (Q=0,4.2,5.4,...,72 m3/h noktalarinda olculmus H degerleri).
+  // Bu, Baymak hizli secim tablosundaki kaba hucre eslesmesinden daha
+  // kesindir: bir model, istenen Q noktasinda egrisinden interpole edilen
+  // H_egri >= istenen H ise o duty point'i fiziksel olarak karsilayabilir.
+  function interpCurveH(curve, Q) {
+    var pts = [];
+    for (var i = 0; i < curve.qPoints.length; i++) {
+      if (curve.hPoints[i] !== null && curve.hPoints[i] !== undefined) {
+        pts.push([curve.qPoints[i], curve.hPoints[i]]);
+      }
+    }
+    if (!pts.length) return null;
+    if (Q < pts[0][0]) return pts[0][1];
+    if (Q > pts[pts.length - 1][0]) return null; // pompanin egrisi bu debiye ulasmiyor
+    for (var j = 0; j < pts.length - 1; j++) {
+      var q0 = pts[j][0], h0 = pts[j][1], q1 = pts[j + 1][0], h1 = pts[j + 1][1];
+      if (Q >= q0 && Q <= q1) {
+        if (q1 === q0) return h0;
+        var t = (Q - q0) / (q1 - q0);
+        return h0 + t * (h1 - h0);
+      }
+    }
+    return null;
+  }
+
+  function calcEvoplusB(Q, H) {
+    var rows = EVOPLUS_B_CURVES.map(function (c) {
+      var hAtQ = (Q === null) ? null : interpCurveH(c, Q);
+      var uygun = hAtQ !== null && H !== null && hAtQ >= H;
+      return { model: c.model, p1maxW: c.p1maxW, hAtQ: hAtQ === null ? null : round(hAtQ, 2), uygun: uygun };
+    });
+    var eligible = rows.filter(function (r) { return r.uygun; });
+    // en kucuk/ekonomik olani P1 gucune gore sirala (asiri buyutmeden en kucuk yeterli motor)
+    eligible.sort(function (a, b) { return (a.p1maxW || 0) - (b.p1maxW || 0); });
+    return { rows: rows, eligible: eligible };
+  }
+
+  function renderEvoplusB(evoplusB, Q, H) {
+    var el = document.getElementById("evoplusBOutput");
+    if (!el) return;
+    if (Q === null || H === null) { el.innerHTML = ""; return; }
+    var html = '<div class="ph-banner ph-banner-info">';
+    html += "<strong>EVOPLUS B kesin pompa eğrisi kontrolü</strong> (Q=" + Q + " m³/h, H=" + H + " mSS için, resmi seçim abağındaki H-Q eğrilerinden doğrusal interpolasyonla):<br/>";
+    if (!evoplusB.eligible.length) {
+      html += "Bu duty point'i karşılayan EVOPLUS B modeli yok (aralık dışı veya H, mevcut eğrilerin üzerinde) / manuel kontrol.";
+    } else {
+      html += "Uygun modeller (küçükten büyüğe, P1 gücüne göre): ";
+      html += evoplusB.eligible.map(function (r) { return "<strong>" + r.model + "</strong> (H≈" + r.hAtQ + " mSS)"; }).join(", ");
+    }
+    html += "<br/><span class=\"ph-field-hint\">Bu kontrol yalnızca resmi seçim abağında eğrisi bulunan EVOPLUS B modelleri içindir; diğer Baymak modelleri hızlı seçim tablosu hücre eşleşmesini kullanır.</span>";
+    html += "</div>";
+    el.innerHTML = html;
+  }
+
   // ---------- 2C KAZAN ----------
   function calcKazan() {
     var kapasite = num("k_kapasite");
@@ -431,12 +488,20 @@
         eligible = okVp || okCp;
       }
 
-      // Baymak/DAB (EVOSTA-EVOPLUS): kaba Q/H dikdortgeni sadece on filtredir;
-      // asil uygunluk, orijinal Excel'deki VLOOKUP hucre eslesmesiyle birebir
-      // (ROUNDUP(Q)/ROUNDUP(H) hucresinde GERCEKTEN secilen model mi) belirlenir.
-      if (eligible && p.brand === "DAB" && p.category === "Sirkülasyon pompası" && p.baymakFamily && ctx.baymak) {
-        var secilen = ctx.baymak.selected ? ctx.baymak.selected[p.baymakFamily] : null;
-        eligible = !!secilen && secilen === p.model;
+      // Baymak/DAB (EVOSTA-EVOPLUS): kaba Q/H dikdortgeni sadece on filtredir.
+      // Resmi H-Q egrisi bulunan EVOPLUS B modelleri icin (evoplusCurveModel)
+      // asil uygunluk, egri interpolasyonuyla (H_egri(Q) >= istenen H) kesin
+      // olarak hesaplanir. Egrisi olmayan diger modeller icin ise orijinal
+      // Excel'deki VLOOKUP hucre eslesmesiyle birebir (ROUNDUP(Q)/ROUNDUP(H)
+      // hucresinde GERCEKTEN secilen model mi) belirlenir.
+      if (eligible && p.brand === "DAB" && p.category === "Sirkülasyon pompası" && p.baymakFamily) {
+        if (p.evoplusCurveModel && ctx.evoplusB) {
+          var curveRow = ctx.evoplusB.rows.filter(function (r) { return r.model === p.model; })[0];
+          eligible = curveRow ? curveRow.uygun : false;
+        } else if (ctx.baymak) {
+          var secilen = ctx.baymak.selected ? ctx.baymak.selected[p.baymakFamily] : null;
+          eligible = !!secilen && secilen === p.model;
+        }
       }
 
       return { product: p, idx: idx, eligible: eligible };
@@ -680,6 +745,9 @@
     var baymak = category === "Sirkülasyon pompası" ? calcBaymak(Qused, Hused) : null;
     if (baymak) renderBaymak(baymak, Qused, Hused);
 
+    var evoplusB = category === "Sirkülasyon pompası" ? calcEvoplusB(Qused, Hused) : null;
+    if (evoplusB) renderEvoplusB(evoplusB, Qused, Hused);
+
     var ctx = {
       freqTercih: str("matchFreq"),
       elektrikTercih: str("matchElectric"),
@@ -687,7 +755,8 @@
       markaTercih: str("matchBrand"),
       pompaTipiTercih: str("matchPumpType"),
       alarko: alarko,
-      baymak: baymak
+      baymak: baymak,
+      evoplusB: evoplusB
     };
 
     var scored = scoreProducts(category, Qused, Hused, ctx);

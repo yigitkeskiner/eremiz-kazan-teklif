@@ -1138,12 +1138,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 0,
-    "qMax": 14,
-    "hMin": 1,
-    "hMax": 11,
+    "qMax": 18,
+    "hMin": 0,
+    "hMax": 12.1,
     "bepQ": 7.5,
     "bepH": 6.5,
-    "motorKW": null,
+    "motorKW": 0.34,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1161,7 +1161,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 220 mm, 220/240 V, P1 maks: 340 W, In: 1.7 A, EEl≤0,22. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1169,12 +1170,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 3,
-    "qMax": 20,
-    "hMin": 4,
-    "hMax": 14,
+    "qMax": 24,
+    "hMin": 0,
+    "hMax": 15,
     "bepQ": 12.0,
     "bepH": 9.5,
-    "motorKW": null,
+    "motorKW": 0.61,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1192,7 +1193,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 250 mm, 220/240 V, P1 maks: 610 W, In: 2.9 A, EEl≤0,20. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1293,12 +1295,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 5,
-    "qMax": 20,
-    "hMin": 1,
-    "hMax": 11,
+    "qMax": 18,
+    "hMin": 0,
+    "hMax": 12,
     "bepQ": 13.0,
     "bepH": 6.5,
-    "motorKW": null,
+    "motorKW": 0.465,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1316,7 +1318,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 250 mm, 220/240 V, P1 maks: 465 W, In: 2.2 A, EEl≤0,20. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1325,11 +1328,11 @@ window.PUMP_PRODUCTS = [
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 7,
     "qMax": 18,
-    "hMin": 1,
-    "hMax": 9,
+    "hMin": 0,
+    "hMax": 10,
     "bepQ": 13.0,
     "bepH": 5.5,
-    "motorKW": null,
+    "motorKW": 0.35,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1347,7 +1350,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 220 mm, 220/240 V, P1 maks: 350 W, In: 1.75 A, EEl≤0,20. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1417,12 +1421,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 8,
-    "qMax": 44,
-    "hMin": 4,
-    "hMax": 14,
+    "qMax": 42,
+    "hMin": 0,
+    "hMax": 15.2,
     "bepQ": 26.5,
     "bepH": 9.5,
-    "motorKW": null,
+    "motorKW": 1.21,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1440,7 +1444,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 340 mm, 220/240 V, P1 maks: 1210 W, In: 5.5 A, EEl≤0,18. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1448,12 +1453,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 10,
-    "qMax": 22,
-    "hMin": 7,
-    "hMax": 12,
+    "qMax": 36,
+    "hMin": 0,
+    "hMax": 17.1,
     "bepQ": 16.5,
     "bepH": 10.0,
-    "motorKW": null,
+    "motorKW": 0.75,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1471,7 +1476,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 280 mm, 220/240 V, P1 maks: 750 W, In: 3.45 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1479,12 +1485,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 14,
-    "qMax": 16,
-    "hMin": 1,
-    "hMax": 2,
+    "qMax": 18,
+    "hMin": 0,
+    "hMax": 8,
     "bepQ": 15.5,
     "bepH": 2.0,
-    "motorKW": null,
+    "motorKW": 0.26,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1502,7 +1508,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 220 mm, 220/240 V, P1 maks: 260 W, In: 1.35 A, EEl≤0,21. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1510,12 +1517,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 14,
-    "qMax": 24,
-    "hMin": 4,
-    "hMax": 9,
+    "qMax": 30,
+    "hMin": 0,
+    "hMax": 15.3,
     "bepQ": 19.5,
     "bepH": 7.0,
-    "motorKW": null,
+    "motorKW": 0.64,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1533,7 +1540,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 280 mm, 220/240 V, P1 maks: 640 W, In: 3 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1542,11 +1550,11 @@ window.PUMP_PRODUCTS = [
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 20,
     "qMax": 24,
-    "hMin": 1,
-    "hMax": 3,
+    "hMin": 0,
+    "hMax": 8,
     "bepQ": 22.5,
     "bepH": 2.5,
-    "motorKW": null,
+    "motorKW": 0.33,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1564,7 +1572,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 240 mm, 220/240 V, P1 maks: 330 W, In: 1.7 A, EEl≤0,21. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1572,12 +1581,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 20,
-    "qMax": 24,
-    "hMin": 2,
-    "hMax": 4,
+    "qMax": 30,
+    "hMin": 0,
+    "hMax": 10,
     "bepQ": 22.5,
     "bepH": 3.5,
-    "motorKW": null,
+    "motorKW": 0.43,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1595,7 +1604,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 280 mm, 220/240 V, P1 maks: 430 W, In: 2.1 A, EEl≤0,20. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1603,12 +1613,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 20,
-    "qMax": 24,
-    "hMin": 3,
-    "hMax": 5,
+    "qMax": 30,
+    "hMin": 0,
+    "hMax": 12,
     "bepQ": 22.5,
     "bepH": 4.5,
-    "motorKW": null,
+    "motorKW": 0.53,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1626,7 +1636,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 280 mm, 220/240 V, P1 maks: 530 W, In: 2.5 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1634,12 +1645,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 20,
-    "qMax": 34,
-    "hMin": 4,
-    "hMax": 7,
+    "qMax": 42,
+    "hMin": 0,
+    "hMax": 12,
     "bepQ": 27.5,
     "bepH": 6.0,
-    "motorKW": null,
+    "motorKW": 0.73,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1657,7 +1668,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 340 mm, 220/240 V, P1 maks: 730 W, In: 3.45 A, EEl≤0,18. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1696,12 +1708,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 24,
-    "qMax": 32,
-    "hMin": 1,
-    "hMax": 4,
+    "qMax": 36,
+    "hMin": 0,
+    "hMax": 8,
     "bepQ": 28.5,
     "bepH": 3.0,
-    "motorKW": null,
+    "motorKW": 0.465,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1719,7 +1731,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 340 mm, 220/240 V, P1 maks: 465 W, In: 2.2 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1727,12 +1740,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 24,
-    "qMax": 32,
-    "hMin": 3,
-    "hMax": 5,
+    "qMax": 36,
+    "hMin": 0,
+    "hMax": 10.1,
     "bepQ": 28.5,
     "bepH": 4.5,
-    "motorKW": null,
+    "motorKW": 0.59,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1750,7 +1763,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 340 mm, 220/240 V, P1 maks: 590 W, In: 2.8 A, EEl≤0,18. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1758,12 +1772,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 26,
-    "qMax": 66,
-    "hMin": 2,
-    "hMax": 11,
+    "qMax": 72,
+    "hMin": 0,
+    "hMax": 12.2,
     "bepQ": 46.5,
     "bepH": 7.0,
-    "motorKW": null,
+    "motorKW": 1.56,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1781,7 +1795,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 450 mm, 220/240 V, P1 maks: 1560 W, In: 7 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1789,12 +1804,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 28,
-    "qMax": 44,
-    "hMin": 3,
-    "hMax": 8,
+    "qMax": 54,
+    "hMin": 0,
+    "hMax": 10,
     "bepQ": 36.5,
     "bepH": 6.0,
-    "motorKW": null,
+    "motorKW": 1.005,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1812,7 +1827,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 360 mm, 220/240 V, P1 maks: 1005 W, In: 4.5 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1882,12 +1898,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 34,
-    "qMax": 62,
-    "hMin": 2,
-    "hMax": 9,
+    "qMax": 72,
+    "hMin": 0,
+    "hMax": 10.1,
     "bepQ": 48.5,
     "bepH": 6.0,
-    "motorKW": null,
+    "motorKW": 1.38,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1905,7 +1921,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 450 mm, 220/240 V, P1 maks: 1380 W, In: 6 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -1975,12 +1992,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 44,
-    "qMax": 56,
-    "hMin": 2,
-    "hMax": 4,
+    "qMax": 54,
+    "hMin": 0,
+    "hMax": 8,
     "bepQ": 50.5,
     "bepH": 3.5,
-    "motorKW": null,
+    "motorKW": 1.08,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -1998,7 +2015,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 450 mm, 220/240 V, P1 maks: 1080 W, In: 4.8 A, EEl≤0,18. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -2006,12 +2024,12 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu (flanşlı, tekli)",
     "qMin": 44,
-    "qMax": 48,
-    "hMin": 4,
-    "hMax": 5,
+    "qMax": 54,
+    "hMin": 0,
+    "hMax": 12.1,
     "bepQ": 46.5,
     "bepH": 5.0,
-    "motorKW": null,
+    "motorKW": 1.235,
     "pumpCount": 1,
     "frequency": "Var",
     "electric": "Monofaze",
@@ -2029,7 +2047,8 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": null,
     "baymakFamily": "flansli",
-    "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Flanşlar arası mesafe: 360 mm, 220/240 V, P1 maks: 1235 W, In: 5.5 A, EEl≤0,19. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir (kaba hızlı seçim tablosu hücresi yerine)."
   },
   {
     "brand": "DAB",
@@ -3084,6 +3103,38 @@ window.PUMP_PRODUCTS = [
     "docLink": null,
     "baymakFamily": "ikizFlansli",
     "note": "Baymak 'Pompa Kolay Secim Programi 2019' Debi/Basma Yuksekligi hizli secim matrisinden alinmistir (ikiz flanşlı aile). Q/H araligi, modelin tabloda ekonomik secim olarak gorundugu hucrelerin siniridir; kesin eslesme calisma zamaninda orijinal matris uzerinden birebir (hucre bazinda) yapilir. Kesin secim icin DAB DNA programi veya katalog egrisi kontrolu onerilir."
+  },
+  {
+    "brand": "DAB",
+    "model": "EVOPLUS B 60/240.50 M",
+    "category": "Sirkülasyon pompası",
+    "pumpType": "Islak rotorlu (flanşlı, tekli)",
+    "qMin": 0,
+    "qMax": 24,
+    "hMin": 0,
+    "hMax": 6,
+    "bepQ": 12.0,
+    "bepH": 3.0,
+    "motorKW": 0.26,
+    "pumpCount": 1,
+    "frequency": "Var",
+    "electric": "Monofaze",
+    "dn": null,
+    "bodyMat": "Döküm",
+    "fanMat": "Kompozit",
+    "maxTemp": 110,
+    "maxPressure": 10,
+    "usage": "Isıtma devresi / HVAC sirkülasyon",
+    "stockCode": null,
+    "listPrice": 0,
+    "currency": "TRY",
+    "discountPct": 0,
+    "netPrice": 0,
+    "stock": "Kontrol",
+    "docLink": null,
+    "baymakFamily": "flansli",
+    "evoplusCurveModel": true,
+    "note": "Baymak/DAB EVOPLUS B resmi 'seçim abağı' teknik tablosundan (H-Q eğrisi) alınmıştır. Bu model hızlı seçim tablosunun hiçbir hücresinde 'en ekonomik' seçenek olarak görünmüyor (bu yüzden Baymak hızlı seçim tablosunda yoktu) ama gerçek bir kataloğ ürünüdür. Flanşlar arası mesafe: 240 mm, 220/240 V, P1 maks: 260 W, In: 1.35 A, EEl≤0,21. Uygunluk, bu eğri üzerinde Q noktasında interpolasyonla hesaplanan H_egri >= istenen H kontrolüyle belirlenir."
   }
 ];
 
@@ -3315,6 +3366,209 @@ window.ALARKO_REGIONS = [
 ];
 
 window.BAYMAK_TABLES = {"disli": [["EVOSTA2 40-70", "EVOSTA2 40-70", "EVOSTA2 40-70", "EVOSTA2 40-70", "EVOSTA3 80/xx", "EVOSTA3 80/xx", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 M", "-", "-", "-", "-", "-", "-", "-"], ["EVOSTA2 40-70", "EVOSTA2 40-70", "EVOSTA2 40-70", "EVOSTA3 80/xx", "EVOPLUS 60/180 M", "EVOPLUS 80/180 M", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 M", "-", "-", "-", "-", "-", "-", "-"], ["EVOSTA3 60/xx", "EVOSTA3 80/xx", "EVOSTA3 80/xx", "EVOPLUS 40/180 M", "EVOPLUS 60/180 M", "EVOPLUS 80/180 M", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["EVOPLUS 40/180 M", "EVOPLUS 40/180 M", "EVOPLUS 40/180 M", "EVOPLUS 60/180 M", "EVOPLUS 80/180 M", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "EVOPLUS 110/180 XM", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["EVOPLUS 40/180 XM", "EVOPLUS 40/180 M", "EVOPLUS 60/180 M", "EVOPLUS 80/180 M", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["EVOPLUS 40/180 XM", "EVOPLUS 60/180 XM", "EVOPLUS 80/180 M", "EVOPLUS 80/180 M", "EVOPLUS 110/180 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["EVOPLUS 60/180 XM", "EVOPLUS 60/180 XM", "EVOPLUS 80/180 XM", "EVOPLUS 110/180 XM", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS 80/180 XM", "EVOPLUS 110/180 XM", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS 110/180 XM", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]], "flansli": [["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/250.40 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/250.40 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/250.40 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/250.40 M", "EVOPLUS B 180/250.40 M", "EVOPLUS B 180/250.40 M"], ["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/220.32 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/250.40 M", "EVOPLUS B 180/250.40 M", "-"], ["EVOPLUS B 40/220.32 M", "EVOPLUS B 40/250.40 M", "EVOPLUS B 60/250.40 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/250.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/250.40 M", "-", "-"], ["EVOPLUS B 40/250.40 M", "EVOPLUS B 60/220.32 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/250.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/250.40 M", "-", "-"], ["EVOPLUS B 60/250.40 M", "EVOPLUS B 80/220.32 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/250.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/250.40 M", "-", "-", "-"], ["EVOPLUS B 80/250.40 M", "EVOPLUS B 110/220.32 M", "EVOPLUS B 110/250.40 M", "EVOPLUS B 60/220.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["EVOPLUS B 110/250.40 M", "EVOPLUS B 60/220.40 M", "EVOPLUS B 60/220.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 60/220.40 M", "EVOPLUS B 60/220.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 60/220.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 60/220.40 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 120/220.32 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 80/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 80/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 100/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 100/220.40 M", "EVOPLUS B 100/220.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 120/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/250.40 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/240.50 M", "EVOPLUS B 80/240.50 M", "EVOPLUS B 100/280.50 M", "EVOPLUS B 120/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/240.50 M", "EVOPLUS B 80/240.50 M", "EVOPLUS B 100/280.50 M", "EVOPLUS B 120/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 180/280.50 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/240.50 M", "EVOPLUS B 100/280.50 M", "EVOPLUS B 120/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/240.50 M", "EVOPLUS B 100/280.50 M", "EVOPLUS B 120/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 150/280.50 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 80/340.65 M", "EVOPLUS B 80/340.65 M", "EVOPLUS B 100/340.65 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 120/340.65 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 60/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 80/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 40/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 40/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 40/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS B 40/450.100 M", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 60/450.100 M", "EVOPLUS B 100/360.80 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 150/340.65 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 120/360.80 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 120/360.80 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 120/360.80 M", "EVOPLUS B 120/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 120/360.80 M", "EVOPLUS B 120/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 80/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 100/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS B 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]], "ikizFlansli": [["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/250.40 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/250.40 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/250.40 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "-", "-", "-", "-", "--", "-"], ["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/250.40 M", "EVOPLUS D 180/250.40 M", "EVOPLUS D 180/250.40 M"], ["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/220.32 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/250.40 M", "EVOPLUS D 180/250.40 M", "-"], ["EVOPLUS D 40/220.32 M", "EVOPLUS D 40/250.40 M", "EVOPLUS D 60/250.40 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/250.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/250.40 M", "-", "-"], ["EVOPLUS D 40/250.40 M", "EVOPLUS D 60/220.32 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/250.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/250.40 M", "-", "-"], ["EVOPLUS D 60/250.40 M", "EVOPLUS D 80/220.32 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/250.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/250.40 M", "-", "-", "-"], ["EVOPLUS D 80/250.40 M", "EVOPLUS D 110/220.32 M", "EVOPLUS D 110/250.40 M", "EVOPLUS D 60/220.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["EVOPLUS D 110/250.40 M", "EVOPLUS D 60/220.40 M", "EVOPLUS D 60/220.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 60/220.40 M", "EVOPLUS D 60/220.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 60/220.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 60/220.40 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 120/220.32 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 80/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 80/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 100/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 100/220.40 M", "EVOPLUS D 100/220.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-"], ["-", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 120/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/250.40 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/240.50 M", "EVOPLUS D 80/240.50 M", "EVOPLUS D 100/280.50 M", "EVOPLUS D 120/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/240.50 M", "EVOPLUS D 80/240.50 M", "EVOPLUS D 100/280.50 M", "EVOPLUS D 120/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 180/280.50 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/240.50 M", "EVOPLUS D 100/280.50 M", "EVOPLUS D 120/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/240.50 M", "EVOPLUS D 100/280.50 M", "EVOPLUS D 120/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 150/280.50 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 80/340.65 M", "EVOPLUS D 80/340.65 M", "EVOPLUS D 100/340.65 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 120/340.65 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 60/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 80/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 40/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 40/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 40/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "EVOPLUS D 40/450.100 M", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 60/450.100 M", "EVOPLUS D 100/360.80 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 150/340.65 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 120/360.80 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 120/360.80 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 120/360.80 M", "EVOPLUS D 120/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 120/360.80 M", "EVOPLUS D 120/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 80/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 100/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "EVOPLUS D 120/450.100 M", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]]};
+
+window.EVOPLUS_B_CURVES = [
+  {
+    "model": "EVOPLUS B 120/220.32 M",
+    "mm": 220,
+    "voltage": "220/240 V",
+    "p1maxW": 340,
+    "inA": 1.7,
+    "eel": "EEl≤0,22",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12.1, 11.5, 10.7, 9.5, 7.9, 6.3, 4.7, 2.2, null, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 80/220.40 M",
+    "mm": 220,
+    "voltage": "220/240 V",
+    "p1maxW": 260,
+    "inA": 1.35,
+    "eel": "EEl≤0,21",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [8, null, 7.9, 7.4, 6.1, 5, 3.7, 2, null, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 100/220.40 M",
+    "mm": 220,
+    "voltage": "220/240 V",
+    "p1maxW": 350,
+    "inA": 1.75,
+    "eel": "EEl≤0,20",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [10, null, null, 9.7, 8.3, 7, 5.5, 3.5, null, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 120/250.40 M",
+    "mm": 250,
+    "voltage": "220/240 V",
+    "p1maxW": 465,
+    "inA": 2.2,
+    "eel": "EEl≤0,20",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12, null, null, 11.5, 10.1, 8.7, 7.3, 5.2, null, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 150/250.40 M",
+    "mm": 250,
+    "voltage": "220/240 V",
+    "p1maxW": 610,
+    "inA": 2.9,
+    "eel": "EEl≤0,20",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [15, null, null, 14.5, 12.8, 11.3, 9.7, 7.5, 3.8, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 60/240.50 M",
+    "mm": 240,
+    "voltage": "220/240 V",
+    "p1maxW": 260,
+    "inA": 1.35,
+    "eel": "EEl≤0,21",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [6, null, null, null, 5.4, 4.7, 4, 3.2, 1.6, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 80/240.50 M",
+    "mm": 240,
+    "voltage": "220/240 V",
+    "p1maxW": 330,
+    "inA": 1.7,
+    "eel": "EEl≤0,21",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [8, null, null, 7.4, 6.6, 5.9, 5.2, 4.2, 2.6, null, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 100/280.50 M",
+    "mm": 280,
+    "voltage": "220/240 V",
+    "p1maxW": 430,
+    "inA": 2.1,
+    "eel": "EEl≤0,20",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [10, null, null, 9.4, 8.4, 7.5, 6.7, 5.5, 3.6, 2, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 120/280.50 M",
+    "mm": 280,
+    "voltage": "220/240 V",
+    "p1maxW": 530,
+    "inA": 2.5,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12, null, null, 11, 9.9, 9, 8.2, 6.9, 4.8, 3, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 150/280.50 M",
+    "mm": 280,
+    "voltage": "220/240 V",
+    "p1maxW": 640,
+    "inA": 3,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [15.3, null, null, 12.4, 11.5, 10.6, 9.6, 8.3, 6.2, 4.2, null, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 180/280.50 M",
+    "mm": 280,
+    "voltage": "220/240 V",
+    "p1maxW": 750,
+    "inA": 3.45,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [17.1, null, null, 14, 13, 12, 11.1, 9.7, 7.4, 5.2, 3.1, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 80/340.65 M",
+    "mm": 340,
+    "voltage": "220/240 V",
+    "p1maxW": 465,
+    "inA": 2.2,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [8, null, null, null, 7.8, 7.4, 6.8, 5.9, 4.6, 3.5, 2, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 100/340.65 M",
+    "mm": 340,
+    "voltage": "220/240 V",
+    "p1maxW": 590,
+    "inA": 2.8,
+    "eel": "EEl≤0,18",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [10.1, null, null, null, 9.8, 9.1, 8.4, 7.6, 6.1, 4.7, 3.1, null, null, null]
+  },
+  {
+    "model": "EVOPLUS B 120/340.65 M",
+    "mm": 340,
+    "voltage": "220/240 V",
+    "p1maxW": 730,
+    "inA": 3.45,
+    "eel": "EEl≤0,18",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12, null, null, null, 11.5, 10.8, 10, 9, 7.4, 5.9, 4.6, 2.8, null, null]
+  },
+  {
+    "model": "EVOPLUS B 150/340.65 M",
+    "mm": 340,
+    "voltage": "220/240 V",
+    "p1maxW": 1210,
+    "inA": 5.5,
+    "eel": "EEl≤0,18",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [15.2, null, null, null, null, 14.9, 14.7, 14, 12.1, 10.3, 8.5, 6.9, null, null]
+  },
+  {
+    "model": "EVOPLUS B 100/360.80 M",
+    "mm": 360,
+    "voltage": "220/240 V",
+    "p1maxW": 1005,
+    "inA": 4.5,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [10, null, null, null, null, null, null, null, 9.7, 8.3, 6.7, 5.4, 3, null]
+  },
+  {
+    "model": "EVOPLUS B 120/360.80 M",
+    "mm": 360,
+    "voltage": "220/240 V",
+    "p1maxW": 1235,
+    "inA": 5.5,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12.1, null, null, null, null, null, null, null, 11.6, 9.9, 8.3, 6.8, 4.1, null]
+  },
+  {
+    "model": "EVOPLUS B 80/450.100 M",
+    "mm": 450,
+    "voltage": "220/240 V",
+    "p1maxW": 1080,
+    "inA": 4.8,
+    "eel": "EEl≤0,18",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [8, null, null, null, null, null, null, null, null, 8, 7.2, 5.7, 3.4, null]
+  },
+  {
+    "model": "EVOPLUS B 100/450.100 M",
+    "mm": 450,
+    "voltage": "220/240 V",
+    "p1maxW": 1380,
+    "inA": 6,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [10.1, null, null, null, null, null, null, null, null, 10.1, 9.2, 7.6, 4.9, 0.7]
+  },
+  {
+    "model": "EVOPLUS B 120/450.100 M",
+    "mm": 450,
+    "voltage": "220/240 V",
+    "p1maxW": 1560,
+    "inA": 7,
+    "eel": "EEl≤0,19",
+    "qPoints": [0, 4.2, 5.4, 7.2, 9.6, 12, 14.4, 18, 24, 30, 36, 42, 54, 72],
+    "hPoints": [12.2, null, null, null, null, null, null, null, null, 11.8, 10.4, 8.7, 5.9, 1.5]
+  }
+];
 
 window.PUMP_LISTS = {
   "Kategoriler": [
