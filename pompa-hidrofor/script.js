@@ -9,6 +9,7 @@
   var PRODUCTS = window.PUMP_PRODUCTS || [];
   var CURVES = window.ALARKO_CURVES || [];
   var REGIONS = window.ALARKO_REGIONS || [];
+  var BAYMAK = window.BAYMAK_TABLES || {};
   var LISTS = window.PUMP_LISTS || {};
 
   var NO_CALC_CATEGORIES = ["Yangın pompası", "Endüstriyel pompa"];
@@ -258,6 +259,60 @@
     el.innerHTML = html;
   }
 
+  // ---------- BAYMAK / DAB (EVOSTA-EVOPLUS) hizli secim matrisi ----------
+  // Baymak "Pompa Kolay Secim Programi 2019" Excel dosyasindaki Debi/Basma
+  // Yuksekligi hizli secim tablolarinin (disli / flansli / ikiz flansli)
+  // birebir JS karsiligidir. Orijinal Excel'de VLOOKUP(ROUNDUP(Q,0), ...,
+  // ROUNDUP(H,0)+1, 0) ile calisir; asagidaki fonksiyon ayni mantigi
+  // window.BAYMAK_TABLES uzerinde uygular (satir = debi 1..N, sutun = basma 1..17).
+  function baymakLookup(table, qRounded, hRounded) {
+    if (!table) return null;
+    var rowIdx = qRounded - 1;
+    var colIdx = hRounded - 1;
+    if (rowIdx < 0 || rowIdx >= table.length) return null;
+    var row = table[rowIdx];
+    if (colIdx < 0 || colIdx >= row.length) return null;
+    var v = row[colIdx];
+    if (!v || v === "-" || v === "--") return null;
+    return v;
+  }
+
+  function calcBaymak(Q, H) {
+    if (Q === null || H === null || Q <= 0 || H <= 0) {
+      return { selected: { disli: null, flansli: null, ikizFlansli: null }, qR: null, hR: null, outOfRange: false };
+    }
+    var qR = Math.ceil(Q);
+    var hR = Math.ceil(H);
+    var maxDebiRow = (BAYMAK.disli || BAYMAK.flansli || BAYMAK.ikizFlansli || []).length;
+    var outOfRange = qR > maxDebiRow || hR > 17;
+    return {
+      selected: {
+        disli: baymakLookup(BAYMAK.disli, qR, hR),
+        flansli: baymakLookup(BAYMAK.flansli, qR, hR),
+        ikizFlansli: baymakLookup(BAYMAK.ikizFlansli, qR, hR)
+      },
+      qR: qR, hR: hR, outOfRange: outOfRange
+    };
+  }
+
+  function renderBaymak(baymak, Q, H) {
+    var el = document.getElementById("baymakOutput");
+    if (!el) return;
+    if (Q === null || H === null) { el.innerHTML = ""; return; }
+    var html = '<div class="ph-banner ph-banner-info">';
+    html += "<strong>Baymak / DAB (EVOSTA-EVOPLUS) hızlı seçim önerisi</strong> (Q=" + Q + " m³/h, H=" + H + " mSS baz alınarak, ROUNDUP(Q)=" + baymak.qR + ", ROUNDUP(H)=" + baymak.hR + " ile Baymak hızlı seçim tablosundan):<br/>";
+    if (baymak.outOfRange) {
+      html += "Girilen değerler Baymak hızlı seçim tablosunun aralığı dışında (Debi ≤ " + ((BAYMAK.disli || []).length) + " m³/h, Basma Yüksekliği ≤ 17 mSS olmalı). DAB DNA seçim programından manuel seçim yapılmalıdır.";
+    } else {
+      html += "Dişli: <strong>" + (baymak.selected.disli || "Uygun model yok / manuel kontrol") + "</strong> &nbsp;•&nbsp; ";
+      html += "Flanşlı: <strong>" + (baymak.selected.flansli || "Uygun model yok / manuel kontrol") + "</strong> &nbsp;•&nbsp; ";
+      html += "İkiz flanşlı: <strong>" + (baymak.selected.ikizFlansli || "Uygun model yok / manuel kontrol") + "</strong>";
+    }
+    html += "<br/><span class=\"ph-field-hint\">Baymak hızlı seçim tablosu, istenen kapasiteyi sağlayan birden fazla ürün arasından fiyat avantajı olanı seçer; farklı çalışma modları için pompa eğrilerine bakılmalı veya DAB DNA programından seçim yapılmalıdır.</span>";
+    html += "</div>";
+    el.innerHTML = html;
+  }
+
   // ---------- 2C KAZAN ----------
   function calcKazan() {
     var kapasite = num("k_kapasite");
@@ -374,6 +429,14 @@
         var okVp = curveRowVp ? curveRowVp.uygun : false;
         var okCp = curveRowCp ? curveRowCp.uygun : false;
         eligible = okVp || okCp;
+      }
+
+      // Baymak/DAB (EVOSTA-EVOPLUS): kaba Q/H dikdortgeni sadece on filtredir;
+      // asil uygunluk, orijinal Excel'deki VLOOKUP hucre eslesmesiyle birebir
+      // (ROUNDUP(Q)/ROUNDUP(H) hucresinde GERCEKTEN secilen model mi) belirlenir.
+      if (eligible && p.brand === "DAB" && p.category === "Sirkülasyon pompası" && p.baymakFamily && ctx.baymak) {
+        var secilen = ctx.baymak.selected ? ctx.baymak.selected[p.baymakFamily] : null;
+        eligible = !!secilen && secilen === p.model;
       }
 
       return { product: p, idx: idx, eligible: eligible };
@@ -614,13 +677,17 @@
     var alarko = category === "Sirkülasyon pompası" ? calcAlarko(Qused, Hused) : null;
     if (alarko) renderAlarko(alarko, Qused, Hused);
 
+    var baymak = category === "Sirkülasyon pompası" ? calcBaymak(Qused, Hused) : null;
+    if (baymak) renderBaymak(baymak, Qused, Hused);
+
     var ctx = {
       freqTercih: str("matchFreq"),
       elektrikTercih: str("matchElectric"),
       sivi: num("matchTemp"),
       markaTercih: str("matchBrand"),
       pompaTipiTercih: str("matchPumpType"),
-      alarko: alarko
+      alarko: alarko,
+      baymak: baymak
     };
 
     var scored = scoreProducts(category, Qused, Hused, ctx);
