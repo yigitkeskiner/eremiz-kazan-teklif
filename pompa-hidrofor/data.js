@@ -372,9 +372,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 11,
-    "hMin": 1,
-    "hMax": 5,
+    "qMax": 11.3,
+    "hMin": 0.5,
+    "hMax": 5.4,
     "bepQ": 6.1,
     "bepH": 3.2,
     "motorKW": null,
@@ -394,7 +394,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -402,9 +402,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 20.5,
-    "hMin": 2,
-    "hMax": 12,
+    "qMax": 30.2,
+    "hMin": 0.2,
+    "hMax": 12.6,
     "bepQ": 11.3,
     "bepH": 7.8,
     "motorKW": null,
@@ -424,7 +424,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -432,9 +432,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 27,
-    "hMin": 2,
-    "hMax": 17,
+    "qMax": 57.6,
+    "hMin": 0.2,
+    "hMax": 17.5,
     "bepQ": 14.9,
     "bepH": 11.1,
     "motorKW": null,
@@ -454,7 +454,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -462,8 +462,8 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 15,
-    "hMin": 1.5,
+    "qMax": 15.9,
+    "hMin": 0.4,
     "hMax": 8,
     "bepQ": 8.2,
     "bepH": 5.2,
@@ -484,7 +484,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -492,9 +492,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 21,
-    "hMin": 2,
-    "hMax": 9,
+    "qMax": 25.5,
+    "hMin": 0.4,
+    "hMax": 9.2,
     "bepQ": 11.6,
     "bepH": 5.9,
     "motorKW": null,
@@ -514,7 +514,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -522,9 +522,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 26,
-    "hMin": 2,
-    "hMax": 12,
+    "qMax": 29.9,
+    "hMin": 0.2,
+    "hMax": 12.6,
     "bepQ": 14.3,
     "bepH": 7.8,
     "motorKW": null,
@@ -544,7 +544,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -552,9 +552,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 42,
-    "hMin": 2,
-    "hMax": 17,
+    "qMax": 57.7,
+    "hMin": 0.2,
+    "hMax": 17.8,
     "bepQ": 23.1,
     "bepH": 11.1,
     "motorKW": null,
@@ -574,7 +574,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -582,9 +582,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 26,
-    "hMin": 2,
-    "hMax": 9,
+    "qMax": 30.2,
+    "hMin": 0.2,
+    "hMax": 10.4,
     "bepQ": 14.3,
     "bepH": 5.9,
     "motorKW": null,
@@ -604,7 +604,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken + sabit basınç grafikleri baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -612,9 +612,9 @@ window.PUMP_PRODUCTS = [
     "category": "Sirkülasyon pompası",
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
-    "qMax": 41,
-    "hMin": 2,
-    "hMax": 10,
+    "qMax": 44.7,
+    "hMin": 0.2,
+    "hMax": 12.6,
     "bepQ": 22.6,
     "bepH": 6.5,
     "motorKW": null,
@@ -634,7 +634,7 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Alarko Optima değişken basınç grafiği baz alınmıştır"
+    "note": "Q/H sınırları Alarko Optima katalog PDF'inin 'Genel Seçim Abağı' grafiğindeki vektör verisinden sayısallaştırılmıştır"
   },
   {
     "brand": "Alarko",
@@ -643,8 +643,8 @@ window.PUMP_PRODUCTS = [
     "pumpType": "Islak rotorlu frekanslı",
     "qMin": 0,
     "qMax": 57.5,
-    "hMin": 2,
-    "hMax": 13,
+    "hMin": 0.2,
+    "hMax": 12.7,
     "bepQ": 31.6,
     "bepH": 8.4,
     "motorKW": null,
@@ -664,10 +664,16 @@ window.PUMP_PRODUCTS = [
     "netPrice": 0,
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
-    "note": "Kullanıcı tarafından sağlanan referans birleşik pompa eğrisi grafiğinden yaklaşık okunmuştur; önceden veri setinde eksikti. Gerçek katalog eğrisiyle doğrulanmalıdır."
+    "note": "Q/H sınırları, Alarko Optima katalog PDF'inin (sirkulasyon-pompasi-alarko-optima-brs-tr.pdf) 'Genel Seçim Abağı' grafiğindeki vektör verisinden birebir sayısallaştırılmıştır; önceden veri setinde eksikti."
   }
 ];
 
+// NOT: Asagidaki degisken basinc alanlari (qMaxVar/altH0/.../ustHson) artik
+// Degisken Basinc (Vp) modeli belirlemek icin KULLANILMIYOR - onun yerine
+// asagidaki window.ALARKO_REGIONS'taki PDF'ten birebir sayisallastirilmis
+// poligon verisi kullaniliyor (bkz. script.js calcAlarko). Bu alanlar sadece
+// Sabit Basinc (Cp) hesabi icin (sabitHalt/sabitQYataySon/sabitHust/...) hala
+// gecerli ve kullaniliyor.
 window.ALARKO_CURVES = [
   {
     "model": "OPTIMA 4/4",
@@ -869,6 +875,24 @@ window.ALARKO_CURVES = [
     "sabitHson": 1,
     "sabitNote": "Kullanıcı tarafından sağlanan referans grafikten yaklaşık"
   }
+];
+
+window.ALARKO_REGIONS = [
+  // Alarko Optima "Genel Secim Abagi" (Degisken Basinc) grafiginden
+  // PDF vektor verisi ile birebir sayisallastirilmistir (yaklasik degil).
+  // Sira onemli: chart'ta kucuk pompalar buyuklerin ustune "boyanir";
+  // bir Q/H noktasi birden fazla bolgeye denk geldiginde dizideki SON
+  // (en sondaki = grafikte en ustte gorunen) esleseni gecerli kabul edilir.
+  { "model": "OPTIMA 5/18", "points": [[0,17.75], [22.97,11.98], [23.96,11.8], [40.66,8.42], [57.69,4.09], [44.41,2.9], [44.79,2.74], [29.58,1.53], [30.31,1.05], [10.87,0.21], [9.64,0.51], [7.79,0.41], [6.69,0.74], [4.71,0.43], [1.68,0.85], [0,0.86]] },
+  { "model": "OPTIMA 4/18", "points": [[0,17.54], [12.74,12.63], [24.84,11.67], [57.6,4.12], [56.25,3.95], [44.39,2.91], [44.86,2.71], [29.58,1.52], [30.05,1.25], [29.73,1], [11.3,0.22], [9.66,0.5], [8.12,0.43], [6.76,0.73], [4.76,0.45], [0,0.86]] },
+  { "model": "OPTIMA 8/12", "points": [[0,12.57], [5.05,12.69], [25.06,11.64], [49.96,6.18], [57.45,4.12], [44.26,2.95], [44.73,2.8], [44.47,2.65], [29.56,1.52], [30.2,1.14], [29.75,1], [11.34,0.23], [10.4,0.3], [9.21,0.48], [7.64,0.42], [6.65,0.72], [4.69,0.44], [0.99,0.85], [0,0.86]] },
+  { "model": "OPTIMA 6/12", "points": [[0,12.55], [5.9,11.79], [14.16,10.03], [30.33,7.09], [44.69,2.8], [44.13,2.63], [29.51,1.53], [29.77,0.99], [11.26,0.24], [9.58,0.53], [8.14,0.43], [6.72,0.74], [5.06,0.49], [4.24,0.58], [0,0.86]] },
+  { "model": "OPTIMA 5/12", "points": [[0,12.57], [6.16,11.78], [11.73,10.84], [29.42,1.77], [29.9,1.31], [29.43,0.99], [11.39,0.21], [9.67,0.5], [7.9,0.39], [6.74,0.74], [4.69,0.46], [0,0.85]] },
+  { "model": "OPTIMA 4/12", "points": [[0,12.57], [12.7,9.09], [13.81,8.77], [26.27,3.56], [30.18,1.15], [29.66,0.98], [11.23,0.21], [10.34,0.31], [9.61,0.54], [7.53,0.47], [6.5,0.75], [5.07,0.51], [4.14,0.59], [0,0.86]] },
+  { "model": "OPTIMA 6/9", "points": [[0,10.37], [16.69,7.88], [30.2,1.15], [29.61,0.99], [11.41,0.23], [10.42,0.28], [9.71,0.56], [7.67,0.47], [6.44,0.76], [4.89,0.59], [0,1.16]] },
+  { "model": "OPTIMA 5/9", "points": [[6.49,0.81], [7.92,0.41], [25.28,1.49], [25.48,1.66], [0,9.21], [0,0.9], [4.89,0.5]] },
+  { "model": "OPTIMA 5/8", "points": [[0,0.84], [4.71,0.42], [15.95,2.32], [4.66,7.96], [0,8.02]] },
+  { "model": "OPTIMA 4/4", "points": [[0,1.17], [4.99,0.5], [11.26,1.48], [4.66,5.05], [0,5.42]] }
 ];
 
 window.PUMP_LISTS = {

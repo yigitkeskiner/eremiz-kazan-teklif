@@ -8,6 +8,7 @@
 
   var PRODUCTS = window.PUMP_PRODUCTS || [];
   var CURVES = window.ALARKO_CURVES || [];
+  var REGIONS = window.ALARKO_REGIONS || [];
   var LISTS = window.PUMP_LISTS || {};
 
   var NO_CALC_CATEGORIES = ["Yangın pompası", "Endüstriyel pompa"];
@@ -197,17 +198,19 @@
   }
 
   // ---------- ALARKO OPTIMA egri kontrolu ----------
-  function alarkoVpUygun(curve, Q, H) {
-    if (Q === null || H === null) return { uygun: false, hAlt: null, hUst: null };
-    if (Q > curve.qMaxVar) return { uygun: false, hAlt: null, hUst: null };
-    var hAlt = curve.altH0 + (Q / curve.qMaxVar) * (curve.altHend - curve.altH0);
-    var hUst;
-    if (Q <= curve.qTepe) {
-      hUst = curve.ustH0 + (Q / curve.qTepe) * (curve.ustHtepe - curve.ustH0);
-    } else {
-      hUst = curve.ustHtepe - ((Q - curve.qTepe) / (curve.qSon - curve.qTepe)) * (curve.ustHtepe - curve.ustHson);
+  // Degisken basinc (Vp): nokta-poligon testi, katalogdaki "Genel Secim
+  // Abagi" grafiginin PDF vektor verisinden birebir sayisallastirilmis
+  // sinirlarina (window.ALARKO_REGIONS) karsi calisir.
+  function pointInPolygon(q, h, points) {
+    var inside = false;
+    for (var i = 0, j = points.length - 1; i < points.length; j = i++) {
+      var qi = points[i][0], hi = points[i][1];
+      var qj = points[j][0], hj = points[j][1];
+      var intersects = ((hi > h) !== (hj > h)) &&
+        (q < (qj - qi) * (h - hi) / (hj - hi) + qi);
+      if (intersects) inside = !inside;
     }
-    return { uygun: H >= hAlt && H <= hUst, hAlt: round(hAlt, 2), hUst: round(hUst, 2) };
+    return inside;
   }
 
   function alarkoCpUygun(curve, Q, H) {
@@ -224,23 +227,22 @@
   }
 
   function calcAlarko(Q, H) {
-    var vpRows = CURVES.map(function (c) {
-      var res = alarkoVpUygun(c, Q, H);
-      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst, qMaxVar: c.qMaxVar };
+    var vpRows = REGIONS.map(function (r) {
+      var uygun = Q !== null && H !== null && pointInPolygon(Q, H, r.points);
+      return { model: r.model, uygun: uygun };
     });
     var cpRows = CURVES.map(function (c) {
       var res = alarkoCpUygun(c, Q, H);
-      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst, qMaxVar: c.qMaxVar };
+      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst };
     });
-    // Birden fazla model ayni Q/H noktasini matematiksel olarak karsilayabilir
-    // (buyuk pompa dusuk devirde kucuk pompanin isini de yapabilir). Referans
-    // birlesik egri grafiginde her nokta tek bir pompanin bolgesine denk
-    // dustugunden, uygun olanlar arasindan en kucuk kapasiteliyi (qMaxVar)
-    // seciyoruz - veri dizisindeki sira (rastgele/aile bazli) degil.
-    var vpBest = vpRows.filter(function (r) { return r.uygun; })
-      .sort(function (a, b) { return a.qMaxVar - b.qMaxVar; })[0];
-    var cpBest = cpRows.filter(function (r) { return r.uygun; })
-      .sort(function (a, b) { return a.qMaxVar - b.qMaxVar; })[0];
+    // ALARKO_REGIONS, referans grafikte kucuk pompalarin buyuklerin ustune
+    // "boyandigi" sirada (kuculen boyuta gore) listelenir; bir Q/H noktasi
+    // birden fazla modelin fiziksel olarak calisabilecegi bolgeye denk
+    // gelebilir (buyuk pompa dusuk devirde kucugun isini de yapabilir), bu
+    // yuzden grafikte GERCEKTEN GORUNEN (dizideki SON uygun) model seciliyor.
+    var vpMatches = vpRows.filter(function (r) { return r.uygun; });
+    var vpBest = vpMatches.length ? vpMatches[vpMatches.length - 1] : undefined;
+    var cpBest = cpRows.filter(function (r) { return r.uygun; })[0];
     return { vpRows: vpRows, cpRows: cpRows, vpBest: vpBest, cpBest: cpBest };
   }
 
