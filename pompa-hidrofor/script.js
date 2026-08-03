@@ -226,14 +226,21 @@
   function calcAlarko(Q, H) {
     var vpRows = CURVES.map(function (c) {
       var res = alarkoVpUygun(c, Q, H);
-      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst };
+      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst, qMaxVar: c.qMaxVar };
     });
     var cpRows = CURVES.map(function (c) {
       var res = alarkoCpUygun(c, Q, H);
-      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst };
+      return { model: c.model, pdfPage: c.pdfPage, uygun: res.uygun, hAlt: res.hAlt, hUst: res.hUst, qMaxVar: c.qMaxVar };
     });
-    var vpBest = vpRows.filter(function (r) { return r.uygun; })[0];
-    var cpBest = cpRows.filter(function (r) { return r.uygun; })[0];
+    // Birden fazla model ayni Q/H noktasini matematiksel olarak karsilayabilir
+    // (buyuk pompa dusuk devirde kucuk pompanin isini de yapabilir). Referans
+    // birlesik egri grafiginde her nokta tek bir pompanin bolgesine denk
+    // dustugunden, uygun olanlar arasindan en kucuk kapasiteliyi (qMaxVar)
+    // seciyoruz - veri dizisindeki sira (rastgele/aile bazli) degil.
+    var vpBest = vpRows.filter(function (r) { return r.uygun; })
+      .sort(function (a, b) { return a.qMaxVar - b.qMaxVar; })[0];
+    var cpBest = cpRows.filter(function (r) { return r.uygun; })
+      .sort(function (a, b) { return a.qMaxVar - b.qMaxVar; })[0];
     return { vpRows: vpRows, cpRows: cpRows, vpBest: vpBest, cpBest: cpBest };
   }
 
@@ -599,13 +606,19 @@
     var Qused = manualQ !== null ? manualQ : calc.Q;
     var Hused = manualH !== null ? manualH : calc.H;
 
+    // Alarko egri uygunlugu, panel otonhesabinin Q/H'siyle degil,
+    // eslestirmede gercekten kullanilan Qused/Hused ile hesaplanmali
+    // (manuel Q/H girildiginde panel hesabi bunlardan farkli olabilir).
+    var alarko = category === "Sirkülasyon pompası" ? calcAlarko(Qused, Hused) : null;
+    if (alarko) renderAlarko(alarko, Qused, Hused);
+
     var ctx = {
       freqTercih: str("matchFreq"),
       elektrikTercih: str("matchElectric"),
       sivi: num("matchTemp"),
       markaTercih: str("matchBrand"),
       pompaTipiTercih: str("matchPumpType"),
-      alarko: calc.alarko
+      alarko: alarko
     };
 
     var scored = scoreProducts(category, Qused, Hused, ctx);

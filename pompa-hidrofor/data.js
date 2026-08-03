@@ -635,6 +635,36 @@ window.PUMP_PRODUCTS = [
     "stock": "Kontrol",
     "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
     "note": "Alarko Optima değişken basınç grafiği baz alınmıştır"
+  },
+  {
+    "brand": "Alarko",
+    "model": "OPTIMA 8/12",
+    "category": "Sirkülasyon pompası",
+    "pumpType": "Islak rotorlu frekanslı",
+    "qMin": 0,
+    "qMax": 57.5,
+    "hMin": 2,
+    "hMax": 13,
+    "bepQ": 31.6,
+    "bepH": 8.4,
+    "motorKW": null,
+    "pumpCount": 1,
+    "frequency": "Var",
+    "electric": "Monofaze",
+    "dn": "DN bilgisi katalogdan kontrol",
+    "bodyMat": "Döküm",
+    "fanMat": "Kompozit",
+    "maxTemp": 110,
+    "maxPressure": 10,
+    "usage": "Isıtma devresi / HVAC sirkülasyon",
+    "stockCode": null,
+    "listPrice": 0,
+    "currency": "TRY",
+    "discountPct": 0,
+    "netPrice": 0,
+    "stock": "Kontrol",
+    "docLink": "ALARKO sirkulasyon-pompasi-alarko-optima-brs-tr (7).pdf",
+    "note": "Kullanıcı tarafından sağlanan referans birleşik pompa eğrisi grafiğinden yaklaşık okunmuştur; önceden veri setinde eksikti. Gerçek katalog eğrisiyle doğrulanmalıdır."
   }
 ];
 
@@ -818,6 +848,26 @@ window.ALARKO_CURVES = [
     "sabitQSon": 41,
     "sabitHson": 1,
     "sabitNote": "PDF p.25 sabit basınç grafiğinden yaklaşık"
+  },
+  {
+    "model": "OPTIMA 8/12",
+    "pdfPage": null,
+    "qMaxVar": 57.5,
+    "hMaxLabel": 13,
+    "altH0": 2,
+    "altHend": 4,
+    "qTepe": 22,
+    "ustH0": 6.5,
+    "ustHtepe": 13,
+    "qSon": 57.5,
+    "ustHson": 4,
+    "note": "Kullanıcı tarafından sağlanan referans birleşik pompa eğrisi grafiğinden yaklaşık okunmuştur",
+    "sabitHalt": 1,
+    "sabitQYataySon": 22,
+    "sabitHust": 13,
+    "sabitQSon": 57.5,
+    "sabitHson": 1,
+    "sabitNote": "Kullanıcı tarafından sağlanan referans grafikten yaklaşık"
   }
 ];
 
