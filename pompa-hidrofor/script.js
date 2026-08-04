@@ -350,7 +350,11 @@
     var eligible = rows.filter(function (r) { return r.uygun; });
     // en kucuk/ekonomik olani P1 gucune gore sirala (asiri buyutmeden en kucuk yeterli motor)
     eligible.sort(function (a, b) { return (a.p1maxW || 0) - (b.p1maxW || 0); });
-    return { rows: rows, eligible: eligible };
+    // sadece tek bir uygun pompa + bir guc buyugu (yedek/ek pay) onerilir;
+    // tum uygun modellerin listesi degil.
+    var best = eligible.length ? eligible[0] : null;
+    var nextUp = eligible.length > 1 ? eligible[1] : null;
+    return { rows: rows, eligible: eligible, best: best, nextUp: nextUp };
   }
 
   function renderEvoplusB(evoplusB, Q, H) {
@@ -358,14 +362,16 @@
     if (!el) return;
     if (Q === null || H === null) { el.innerHTML = ""; return; }
     var html = '<div class="ph-banner ph-banner-info">';
-    html += "<strong>EVOPLUS B kesin pompa eğrisi kontrolü</strong> (Q=" + Q + " m³/h, H=" + H + " mSS için, resmi seçim abağındaki H-Q eğrilerinden doğrusal interpolasyonla):<br/>";
-    if (!evoplusB.eligible.length) {
+    html += "<strong>EVOPLUS B kesin pompa eğrisi önerisi</strong> (Q=" + Q + " m³/h, H=" + H + " mSS için, resmi seçim abağındaki H-Q eğrilerinden doğrusal interpolasyonla):<br/>";
+    if (!evoplusB.best) {
       html += "Bu duty point'i karşılayan EVOPLUS B modeli yok (aralık dışı veya H, mevcut eğrilerin üzerinde) / manuel kontrol.";
     } else {
-      html += "Uygun modeller (küçükten büyüğe, P1 gücüne göre): ";
-      html += evoplusB.eligible.map(function (r) { return "<strong>" + r.model + "</strong> (H≈" + r.hAtQ + " mSS)"; }).join(", ");
+      html += "Uygun pompa: <strong>" + evoplusB.best.model + "</strong> (H≈" + evoplusB.best.hAtQ + " mSS, P1=" + evoplusB.best.p1maxW + " W)";
+      if (evoplusB.nextUp) {
+        html += " &nbsp;•&nbsp; Bir güç büyüğü (yedek/ek pay): <strong>" + evoplusB.nextUp.model + "</strong> (H≈" + evoplusB.nextUp.hAtQ + " mSS, P1=" + evoplusB.nextUp.p1maxW + " W)";
+      }
     }
-    html += "<br/><span class=\"ph-field-hint\">Bu kontrol yalnızca resmi seçim abağında eğrisi bulunan EVOPLUS B modelleri içindir; diğer Baymak modelleri hızlı seçim tablosu hücre eşleşmesini kullanır.</span>";
+    html += "<br/><span class=\"ph-field-hint\">Bu öneri yalnızca resmi seçim abağında eğrisi bulunan EVOPLUS B modelleri içindir; diğer Baymak modelleri hızlı seçim tablosu hücre eşleşmesini kullanır.</span>";
     html += "</div>";
     el.innerHTML = html;
   }
@@ -723,6 +729,35 @@
     // pompa tipi tercihi listesini kategoriye gore doldur
     var types = Array.from(new Set(PRODUCTS.filter(function (p) { return p.category === category; }).map(function (p) { return p.pumpType; })));
     fillSelect("matchPumpType", types, "Farketmez");
+
+    // Sirkulasyon kategorisine gecildiginde Alarko/Baymak/EVOPLUS B
+    // onerilerini de buton beklemeden hemen goster (mevcut Q/H degerleriyle).
+    if (["Hidrofor", "Sirkülasyon pompası", "Kazan dairesi pompası"].indexOf(category) > -1) {
+      var calc0 = runCategoryCalc(category);
+      if (category === "Sirkülasyon pompası") updateSirkulasyonLive(calc0);
+    }
+  }
+
+  // Sirkulasyon kategorisi icin Alarko / Baymak / EVOPLUS B onerilerini
+  // hesaplar ve ilgili panellere yazar. Hem canli onizlemede (kullanici
+  // herhangi bir alani degistirdiginde, buton beklemeden) hem de
+  // "Urunleri Eslestir ve Sirala" akisinda kullanilir.
+  function updateSirkulasyonLive(calc) {
+    var manualQ = num("matchQ");
+    var manualH = num("matchH");
+    var Qused = manualQ !== null ? manualQ : calc.Q;
+    var Hused = manualH !== null ? manualH : calc.H;
+
+    var alarko = calcAlarko(Qused, Hused);
+    renderAlarko(alarko, Qused, Hused);
+
+    var baymak = calcBaymak(Qused, Hused);
+    renderBaymak(baymak, Qused, Hused);
+
+    var evoplusB = calcEvoplusB(Qused, Hused);
+    renderEvoplusB(evoplusB, Qused, Hused);
+
+    return { Qused: Qused, Hused: Hused, alarko: alarko, baymak: baymak, evoplusB: evoplusB };
   }
 
   function runMatch() {
@@ -730,23 +765,12 @@
     if (!category) return;
 
     var calc = runCategoryCalc(category);
+    var live = category === "Sirkülasyon pompası" ? updateSirkulasyonLive(calc) : null;
 
     var manualQ = num("matchQ");
     var manualH = num("matchH");
-    var Qused = manualQ !== null ? manualQ : calc.Q;
-    var Hused = manualH !== null ? manualH : calc.H;
-
-    // Alarko egri uygunlugu, panel otonhesabinin Q/H'siyle degil,
-    // eslestirmede gercekten kullanilan Qused/Hused ile hesaplanmali
-    // (manuel Q/H girildiginde panel hesabi bunlardan farkli olabilir).
-    var alarko = category === "Sirkülasyon pompası" ? calcAlarko(Qused, Hused) : null;
-    if (alarko) renderAlarko(alarko, Qused, Hused);
-
-    var baymak = category === "Sirkülasyon pompası" ? calcBaymak(Qused, Hused) : null;
-    if (baymak) renderBaymak(baymak, Qused, Hused);
-
-    var evoplusB = category === "Sirkülasyon pompası" ? calcEvoplusB(Qused, Hused) : null;
-    if (evoplusB) renderEvoplusB(evoplusB, Qused, Hused);
+    var Qused = live ? live.Qused : (manualQ !== null ? manualQ : calc.Q);
+    var Hused = live ? live.Hused : (manualH !== null ? manualH : calc.H);
 
     var ctx = {
       freqTercih: str("matchFreq"),
@@ -754,9 +778,9 @@
       sivi: num("matchTemp"),
       markaTercih: str("matchBrand"),
       pompaTipiTercih: str("matchPumpType"),
-      alarko: alarko,
-      baymak: baymak,
-      evoplusB: evoplusB
+      alarko: live ? live.alarko : null,
+      baymak: live ? live.baymak : null,
+      evoplusB: live ? live.evoplusB : null
     };
 
     var scored = scoreProducts(category, Qused, Hused, ctx);
@@ -784,12 +808,16 @@
     document.getElementById("category").addEventListener("change", updateCategoryPanels);
     document.getElementById("runMatchBtn").addEventListener("click", runMatch);
 
-    // canli hesap onizlemesi: kategori panel alanlari degistiginde otomatik yeniden hesapla
+    // canli hesap onizlemesi: kategori panel alanlari (veya manuel Q/H,
+    // marka/frekans/elektrik tercihleri) degistiginde otomatik yeniden
+    // hesapla ve Sirkulasyon icin Alarko/Baymak/EVOPLUS B onerilerini
+    // buton beklemeden hemen guncelle.
     document.getElementById("phForm").addEventListener("input", function (e) {
       var category = str("category");
       if (!category) return;
       if (["Hidrofor", "Sirkülasyon pompası", "Kazan dairesi pompası"].indexOf(category) > -1) {
-        runCategoryCalc(category);
+        var calc = runCategoryCalc(category);
+        if (category === "Sirkülasyon pompası") updateSirkulasyonLive(calc);
       }
     });
 
