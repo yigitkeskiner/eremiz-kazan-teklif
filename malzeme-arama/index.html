@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Erem Group | Mekanik Malzeme Arama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<style>
+:root{--navy:#137d76;--navy2:#0f625d;--bg:transparent;--card:#fff;--line:#dce7e7;--txt:#172124;--mut:#647174;--acc:#eef7f6;--ok:#e2efda;--okt:#2e6b1f}
+*{box-sizing:border-box}
+body{margin:0;font-size:14px}
+.ma-main{max-width:1200px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 60px}
+h1{margin:4px 0 4px;font-size:22px;color:var(--navy)}
+.sub{color:var(--mut);margin:0 0 16px}
+.searchbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(20,40,70,.05)}
+.q{flex:1 1 320px;position:relative}
+.q input{width:100%;font-size:17px;padding:13px 40px 13px 14px;border:2px solid var(--line);border-radius:10px;outline:none}
+.q input:focus{border-color:var(--navy)}
+.q button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;font-size:20px;color:var(--mut);cursor:pointer;display:none}
+select{padding:12px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:14px;min-width:150px;flex:0 1 190px}
+.hint{color:var(--mut);font-size:12.5px;margin:8px 2px 0}
+.hint code{background:var(--acc);color:var(--navy);padding:1px 6px;border-radius:5px;font-weight:700;cursor:pointer}
+.stat{margin:18px 2px 10px;color:var(--mut);font-size:13px}
+.stat b{color:var(--txt)}
+.grp{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.gh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;background:#fafbfd;border-bottom:1px solid var(--line)}
+.code{font-family:ui-monospace,Consolas,monospace;background:var(--navy);color:#fff;padding:4px 9px;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap}
+.code.alt{background:var(--acc);color:var(--navy)}
+.gt{font-weight:700}
+.gs{color:var(--mut);font-size:12.5px}
+.chips{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.chip{font-size:11.5px;padding:3px 8px;border-radius:20px;background:var(--acc);color:var(--navy);font-weight:600}
+.chip.multi{background:var(--ok);color:var(--okt)}
+table{width:100%;border-collapse:collapse}
+td{padding:8px 14px;border-top:1px solid #f0f3f7;vertical-align:top}
+tr:first-child td{border-top:0}
+td.mk{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--mut);white-space:nowrap;cursor:pointer;width:1%}
+td.br{font-weight:700;white-space:nowrap;width:1%}
+.tags span{display:inline-block;font-size:11px;background:#f1f3f6;color:#4a5563;border-radius:5px;padding:1px 6px;margin:3px 4px 0 0}
+.fams h3{font-size:13px;letter-spacing:.04em;color:var(--mut);margin:22px 0 8px;text-transform:uppercase}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.fam{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 11px;display:flex;gap:9px;align-items:center;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.fam:hover{border-color:var(--navy);background:#fbfdff}
+.fam .n{margin-left:auto;color:var(--mut);font-size:12px}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:30px;text-align:center;color:var(--mut)}
+.more{text-align:center;margin:14px}
+.more button{background:var(--navy);color:#fff;border:0;border-radius:9px;padding:10px 18px;font-weight:700;cursor:pointer}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--txt);color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:.2s;pointer-events:none}
+.toast.on{opacity:1}
+@media(max-width:640px){td.mk{display:none}.chips{margin-left:0}select{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Erem Group ana sayfa">
+    <img src="/logo_dark.png" alt="Erem Group" style="height:40px;display:block;" />
+  </a>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="/#teklif">Kazan Teklifi</a>
+    <a href="/pompa-hidrofor">Pompa &amp; Hidrofor</a>
+    <a href="/malzeme-arama" class="active">Malzeme Arama</a>
+  </nav>
+  <a class="header-action" href="#q">Aramaya Git</a>
+</header>
+<main class="ma-main">
+  <h1>Mekanik Malzeme Arama</h1>
+  <p class="sub">Aile kodu, grup kodu, malzeme kodu veya ürün adıyla arayın. Aynı ürünün tüm markalardaki karşılıkları birlikte listelenir.</p>
+  <div class="searchbar">
+    <div class="q"><input id="q" type="text" placeholder="Örn: D15, D15-100, D17, YM100, kelebek dn150, armaş relief" autocomplete="off" autofocus><button id="clr" title="Temizle">×</button></div>
+    <select id="fAna"><option value="">Tüm ana gruplar</option></select>
+    <select id="fMarka"><option value="">Tüm markalar</option></select>
+  </div>
+  <p class="hint">Hızlı: <code>D15</code> yükselen milli vanalar · <code>D17</code> sprinklerler · <code>D15-100</code> DN100 · <code>YM100</code> kısa kod · serbest metin: <code>küresel 1"</code></p>
+  <div id="stat" class="stat"></div>
+  <div id="out"></div>
+</main>
+<div id="toast" class="toast"></div>
+<script src="/malzeme-arama/data.js"></script>
+<script>
+const DATA = window.MALZEME_DATA;
+const I={aile:0,grup:1,kisa:2,tip:3,olcu:4,birim:5,kod:6,ad:7,marka:8,bag:9,mlz:10,onay:11,pn:12,kw:13};
+const TR={'Ç':'C','Ğ':'G','İ':'I','Ö':'O','Ş':'S','Ü':'U','ç':'C','ğ':'G','ı':'I','ö':'O','ş':'S','ü':'U','i':'I'};
+const norm=s=>String(s).replace(/[ÇĞİÖŞÜçğıöşüi]/g,c=>TR[c]).toUpperCase().replace(/\s+/g,' ').trim();
+const INCH={'1/2':'15','3/4':'20','1':'25','11/4':'32','1 1/4':'32','11/2':'40','1 1/2':'40','2':'50','21/2':'65','2 1/2':'65','3':'80','4':'100','5':'125','6':'150','8':'200','10':'250','12':'300'};
+const rows=DATA.rows, fam=DATA.fam;
+const hay=rows.map(r=>{const f=fam[r[I.aile]]||{};let h=[r[I.aile],r[I.grup],r[I.kisa],r[I.kod],r[I.ad],r[I.marka],r[I.tip],f.ad,r[I.bag],r[I.mlz],r[I.pn]].join(' ');
+  if(r[I.birim]==='DN'&&r[I.olcu]) h+=' DN'+r[I.olcu]+' DN '+r[I.olcu];
+  return ' '+norm(h)+' ';});
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=id=>document.getElementById(id);
+DATA.ana.forEach(a=>$('fAna').add(new Option(a,a)));
+[...new Set(rows.map(r=>r[I.marka]))].sort((a,b)=>a.localeCompare(b,'tr')).forEach(m=>$('fMarka').add(new Option(m,m)));
+let limit=60;
+
+function match(q){
+  const Q=norm(q), fA=$('fAna').value, fM=$('fMarka').value;
+  let idx=[];
+  const pass=i=>(!fA||(fam[rows[i][I.aile]]||{}).ana===fA)&&(!fM||rows[i][I.marka]===fM);
+  if(!Q){ if(!fA&&!fM) return null; rows.forEach((r,i)=>pass(i)&&idx.push(i)); return idx;}
+  for(const k of [I.aile,I.grup,I.kisa,I.kod]){ rows.forEach((r,i)=>{if(norm(r[k])===Q&&pass(i))idx.push(i)}); if(idx.length) return idx; }
+  // serbest metin: 1" gibi inç ifadelerini DN'e çevir
+  let toks=Q.replace(/(\d+\s?\d?\/?\d*)\s*(\"|'')/g,(m,a)=>INCH[a.trim()]?'DN'+INCH[a.trim()]:m).split(' ').filter(Boolean);
+  toks=toks.map(t=>/^DN\d+$/.test(t)?' '+t+' ':t);
+  rows.forEach((r,i)=>{if(pass(i)&&toks.every(t=>hay[i].includes(t)))idx.push(i)});
+  return idx;
+}
+function render(){
+  const q=$('q').value; $('clr').style.display=q?'block':'none';
+  const idx=match(q);
+  if(idx===null){ $('stat').innerHTML=''; return renderFams(); }
+  if(!idx.length){ $('stat').innerHTML=''; $('out').innerHTML='<div class="empty">Sonuç bulunamadı. Farklı bir kod veya kelime deneyin.</div>'; return;}
+  const groups=new Map(); idx.forEach(i=>{const g=rows[i][I.grup]; if(!groups.has(g))groups.set(g,[]); groups.get(g).push(i)});
+  const brands=new Set(idx.map(i=>rows[i][I.marka]));
+  $('stat').innerHTML=`<b>${idx.length}</b> ürün · <b>${groups.size}</b> grup · <b>${brands.size}</b> marka`;
+  let html='',n=0;
+  for(const [g,list] of groups){ if(n++>=limit)break;
+    const r0=rows[list[0]], f=fam[r0[I.aile]]||{};
+    const bs=[...new Set(list.map(i=>rows[i][I.marka]))];
+    const size=r0[I.olcu]?`${esc(r0[I.olcu])} <span class="gs">${esc(r0[I.birim])}</span>`:'';
+    html+=`<div class="grp"><div class="gh"><span class="code" data-c="${esc(g)}">${esc(g)}</span>${r0[I.kisa]!==g?`<span class="code alt" data-c="${esc(r0[I.kisa])}">${esc(r0[I.kisa])}</span>`:''}
+      <span class="gt">${esc(r0[I.tip])}</span><span>${size}</span>
+      <span class="chips">${bs.map(b=>`<span class="chip ${bs.length>1?'multi':''}">${esc(b)}</span>`).join('')}</span></div><table>`;
+    for(const i of list){const r=rows[i];
+      const tags=[r[I.bag],r[I.mlz],r[I.onay],r[I.pn],r[I.kw]?r[I.kw]+' kW':''].filter(Boolean);
+      html+=`<tr><td class="br">${esc(r[I.marka])}</td><td>${esc(r[I.ad])}<div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></td><td class="mk" data-c="${esc(r[I.kod])}" title="Kopyala">${esc(r[I.kod])}</td></tr>`;}
+    html+='</table></div>';
+  }
+  if(groups.size>limit) html+=`<div class="more"><button onclick="limit+=60;render()">Daha fazla göster (${groups.size-limit} grup daha)</button></div>`;
+  $('out').innerHTML=html;
+}
+function renderFams(){
+  const cnt={}; rows.forEach(r=>cnt[r[I.aile]]=(cnt[r[I.aile]]||0)+1);
+  const by={}; Object.entries(fam).forEach(([k,v])=>{(by[v.ana]=by[v.ana]||[]).push(k)});
+  let html='<div class="fams">';
+  for(const a of DATA.ana){ if(!by[a])continue;
+    html+=`<h3>${esc(a)}</h3><div class="fgrid">`+by[a].sort((x,y)=>+x.slice(1)-+y.slice(1)).map(k=>`<button class="fam" data-f="${k}"><span class="code">${k}</span><span>${esc(fam[k].ad)}</span><span class="n">${cnt[k]}</span></button>`).join('')+'</div>';}
+  $('out').innerHTML=html+'</div>';
+}
+let t; $('q').addEventListener('input',()=>{limit=60;clearTimeout(t);t=setTimeout(()=>{render();sync()},150)});
+$('fAna').onchange=$('fMarka').onchange=()=>{limit=60;render()};
+$('clr').onclick=()=>{$('q').value='';render();sync();$('q').focus()};
+function toast(m){const e=$('toast');e.textContent=m;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1200)}
+$('out').addEventListener('click',e=>{
+  const f=e.target.closest('[data-f]'); if(f){$('q').value=f.dataset.f;render();sync();window.scrollTo(0,0);return;}
+  const c=e.target.closest('[data-c]'); if(c){navigator.clipboard?.writeText(c.dataset.c).then(()=>toast(c.dataset.c+' kopyalandı'),()=>{});}
+});
+document.querySelector('.hint').addEventListener('click',e=>{if(e.target.tagName==='CODE'){$('q').value=e.target.textContent;render();sync()}});
+function sync(){try{const u=new URL(location.href);$('q').value?u.searchParams.set('q',$('q').value):u.searchParams.delete('q');history.replaceState(null,'',u)}catch(e){}}
+try{const p=new URLSearchParams(location.search).get('q'); if(p)$('q').value=p;}catch(e){}
+render();
+</script>
+</body>
+</html>
