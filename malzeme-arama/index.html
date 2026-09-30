@@ -51,6 +51,39 @@ td.br{font-weight:700;white-space:nowrap;width:1%}
 .more button{background:var(--navy);color:#fff;border:0;border-radius:9px;padding:10px 18px;font-weight:700;cursor:pointer}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--txt);color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:.2s;pointer-events:none}
 .toast.on{opacity:1}
+.addb{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:8px;padding:5px 10px;font-weight:700;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.addb:hover{background:var(--navy);color:#fff}
+.addb.in{background:var(--navy);color:#fff}
+td.ac{width:1%;white-space:nowrap;text-align:right}
+.cartbtn{position:relative}
+.cartbtn .cnt{display:inline-block;min-width:20px;padding:0 6px;margin-left:6px;border-radius:10px;background:#fff;color:var(--navy);font-size:12px;line-height:20px;text-align:center}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--navy);color:#fff;border:0;border-radius:30px;padding:13px 18px;font-weight:800;font-size:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);cursor:pointer;display:none}
+.fab .cnt{background:#fff;color:var(--navy);border-radius:10px;padding:0 7px;margin-left:6px}
+.ov{position:fixed;inset:0;background:rgba(10,20,25,.35);z-index:40;display:none}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:#fff;z-index:41;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .2s;box-shadow:-8px 0 24px rgba(0,0,0,.12)}
+.open .ov{display:block}.open .drawer{transform:none}
+.dh{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-size:18px;color:var(--navy);flex:1}
+.dh .x{border:0;background:none;font-size:26px;cursor:pointer;color:var(--mut)}
+.meta{display:flex;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.meta input{flex:1 1 200px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:13.5px}
+.items{flex:1;overflow:auto;padding:6px 18px}
+.it{border-bottom:1px solid #eef2f2;padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:6px 12px}
+.it .nm{font-weight:600;font-size:13.5px}
+.it .sub2{color:var(--mut);font-size:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.it select{min-width:0;flex:0 1 auto;padding:4px 6px;font-size:12px;border-radius:6px}
+.qty{display:flex;align-items:center;gap:4px}
+.qty button{width:28px;height:28px;border:1px solid var(--line);background:#fff;border-radius:7px;font-size:16px;cursor:pointer}
+.qty input{width:52px;height:28px;text-align:center;border:1px solid var(--line);border-radius:7px;font-size:14px}
+.rm{border:0;background:none;color:#b3261e;font-size:12px;cursor:pointer;padding:0}
+.df{border-top:1px solid var(--line);padding:14px 18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.df .sum{flex:1 1 100%;color:var(--mut);font-size:13px}
+.btn{border:0;border-radius:9px;padding:11px 14px;font-weight:700;cursor:pointer;font-size:13.5px}
+.btn.p{background:var(--navy);color:#fff}.btn.s{background:var(--acc);color:var(--navy)}.btn.d{background:#fdecea;color:#b3261e;margin-left:auto}
+.cempty{color:var(--mut);text-align:center;padding:40px 10px}
+#printArea{display:none}
+@media print{body>*:not(#printArea){display:none!important}#printArea{display:block;font-family:Arial,sans-serif;font-size:11pt}#printArea table{width:100%;border-collapse:collapse}#printArea th,#printArea td{border:1px solid #999;padding:5px 6px;text-align:left}#printArea th{background:#eef7f6}}
+@media(max-width:640px){td.ac{padding-left:4px}.fab{display:block}}
 @media(max-width:640px){td.mk{display:none}.chips{margin-left:0}select{flex:1 1 100%}}
 </style>
 </head>
@@ -64,21 +97,31 @@ td.br{font-weight:700;white-space:nowrap;width:1%}
     <a href="/pompa-hidrofor">Pompa &amp; Hidrofor</a>
     <a href="/malzeme-arama" class="active">Malzeme Arama</a>
   </nav>
-  <a class="header-action" href="#q">Aramaya Git</a>
+  <a class="header-action cartbtn" href="#" id="cartOpen">Sepet<span class="cnt" id="cartCnt">0</span></a>
 </header>
 <main class="ma-main">
   <h1>Mekanik Malzeme Arama</h1>
   <p class="sub">Aile kodu, grup kodu, malzeme kodu veya ürün adıyla arayın. Aynı ürünün tüm markalardaki karşılıkları birlikte listelenir.</p>
   <div class="searchbar">
-    <div class="q"><input id="q" type="text" placeholder="Örn: D15, D15-100, D17, YM100, kelebek dn150, armaş relief" autocomplete="off" autofocus><button id="clr" title="Temizle">×</button></div>
+    <div class="q"><input id="q" type="text" placeholder="Örn: D15, D15-100, D15-100-PN16, D17, YM100, kelebek dn150, armaş relief" autocomplete="off" autofocus><button id="clr" title="Temizle">×</button></div>
     <select id="fAna"><option value="">Tüm ana gruplar</option></select>
     <select id="fMarka"><option value="">Tüm markalar</option></select>
   </div>
-  <p class="hint">Hızlı: <code>D15</code> yükselen milli vanalar · <code>D17</code> sprinklerler · <code>D15-100</code> DN100 · <code>YM100</code> kısa kod · serbest metin: <code>küresel 1"</code></p>
+  <p class="hint">Hızlı: <code>D15</code> yükselen milli vanalar · <code>D17</code> sprinklerler · <code>D15-100</code> DN100 · <code>D26-25-PN25</code> PN'li · <code>YM100</code> kısa kod · serbest metin: <code>küresel 1"</code></p>
   <div id="stat" class="stat"></div>
   <div id="out"></div>
 </main>
 <div id="toast" class="toast"></div>
+<button class="fab" id="fab">Sepet<span class="cnt" id="fabCnt">0</span></button>
+<div id="cartWrap"><div class="ov" id="ov"></div>
+<aside class="drawer" aria-label="Sepet">
+  <div class="dh"><h2>Sepet</h2><button class="x" id="cartClose" aria-label="Kapat">×</button></div>
+  <div class="meta"><input id="cMus" placeholder="Firma / Müşteri"><input id="cPrj" placeholder="Proje / Bina"></div>
+  <div class="items" id="cartItems"></div>
+  <div class="df"><div class="sum" id="cartSum"></div>
+    <button class="btn p" id="cXls">Excel indir</button><button class="btn s" id="cPrint">Yazdır / PDF</button><button class="btn s" id="cCopy">Kopyala</button><button class="btn d" id="cClear">Temizle</button></div>
+</aside></div>
+<div id="printArea"></div>
 <script src="/malzeme-arama/data.js"></script>
 <script>
 const DATA = window.MALZEME_DATA;
@@ -101,7 +144,7 @@ function match(q){
   let idx=[];
   const pass=i=>(!fA||(fam[rows[i][I.aile]]||{}).ana===fA)&&(!fM||rows[i][I.marka]===fM);
   if(!Q){ if(!fA&&!fM) return null; rows.forEach((r,i)=>pass(i)&&idx.push(i)); return idx;}
-  for(const k of [I.aile,I.grup,I.kisa,I.kod]){ rows.forEach((r,i)=>{if(norm(r[k])===Q&&pass(i))idx.push(i)}); if(idx.length) return idx; }
+  for(const k of [I.aile,I.grup,I.kisa,I.kod]){ rows.forEach((r,i)=>{const v=norm(r[k]); if((v===Q||(k===I.grup&&v.startsWith(Q+'-')))&&pass(i))idx.push(i)}); if(idx.length) return idx; }
   // serbest metin: 1" gibi inç ifadelerini DN'e çevir
   let toks=Q.replace(/(\d+\s?\d?\/?\d*)\s*(\"|'')/g,(m,a)=>INCH[a.trim()]?'DN'+INCH[a.trim()]:m).split(' ').filter(Boolean);
   toks=toks.map(t=>/^DN\d+$/.test(t)?' '+t+' ':t);
@@ -126,7 +169,7 @@ function render(){
       <span class="chips">${bs.map(b=>`<span class="chip ${bs.length>1?'multi':''}">${esc(b)}</span>`).join('')}</span></div><table>`;
     for(const i of list){const r=rows[i];
       const tags=[r[I.bag],r[I.mlz],r[I.onay],r[I.pn],r[I.kw]?r[I.kw]+' kW':''].filter(Boolean);
-      html+=`<tr><td class="br">${esc(r[I.marka])}</td><td>${esc(r[I.ad])}<div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></td><td class="mk" data-c="${esc(r[I.kod])}" title="Kopyala">${esc(r[I.kod])}</td></tr>`;}
+      html+=`<tr><td class="br">${esc(r[I.marka])}</td><td>${esc(r[I.ad])}<div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></td><td class="mk" data-c="${esc(r[I.kod])}" title="Kopyala">${esc(r[I.kod])}</td><td class="ac"><button class="addb${cart.q[r[I.kod]]?' in':''}" data-add="${i}">${cart.q[r[I.kod]]?'Sepette ('+cart.q[r[I.kod]]+') +':'+ Sepet'}</button></td></tr>`;}
     html+='</table></div>';
   }
   if(groups.size>limit) html+=`<div class="more"><button onclick="limit+=60;render()">Daha fazla göster (${groups.size-limit} grup daha)</button></div>`;
@@ -145,12 +188,59 @@ $('fAna').onchange=$('fMarka').onchange=()=>{limit=60;render()};
 $('clr').onclick=()=>{$('q').value='';render();sync();$('q').focus()};
 function toast(m){const e=$('toast');e.textContent=m;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1200)}
 $('out').addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]'); if(a){addCart(+a.dataset.add,1);return;}
   const f=e.target.closest('[data-f]'); if(f){$('q').value=f.dataset.f;render();sync();window.scrollTo(0,0);return;}
   const c=e.target.closest('[data-c]'); if(c){navigator.clipboard?.writeText(c.dataset.c).then(()=>toast(c.dataset.c+' kopyalandı'),()=>{});}
 });
 document.querySelector('.hint').addEventListener('click',e=>{if(e.target.tagName==='CODE'){$('q').value=e.target.textContent;render();sync()}});
 function sync(){try{const u=new URL(location.href);$('q').value?u.searchParams.set('q',$('q').value):u.searchParams.delete('q');history.replaceState(null,'',u)}catch(e){}}
 try{const p=new URLSearchParams(location.search).get('q'); if(p)$('q').value=p;}catch(e){}
+
+// ================= SEPET =================
+const byKod={}; rows.forEach((r,i)=>byKod[r[I.kod]]=i);
+const byGrup={}; rows.forEach((r,i)=>(byGrup[r[I.grup]]=byGrup[r[I.grup]]||[]).push(i));
+let cart={order:[],q:{},mus:'',prj:''};
+try{const c=JSON.parse(localStorage.getItem('eremSepet')||'null'); if(c&&c.order){cart=c; cart.order=cart.order.filter(k=>k in byKod);}}catch(e){}
+function saveCart(){try{localStorage.setItem('eremSepet',JSON.stringify(cart))}catch(e){}}
+function addCart(i,n){const k=rows[i][I.kod]; if(!cart.q[k]){cart.q[k]=0;cart.order.push(k);} cart.q[k]+=n; saveCart(); toast(rows[i][I.marka]+' sepete eklendi'); refreshCart(); render();}
+function setQty(k,v){v=Math.max(0,Math.round(+v||0)); if(!v){delete cart.q[k];cart.order=cart.order.filter(x=>x!==k);} else cart.q[k]=v; saveCart(); refreshCart(); render();}
+function swapItem(oldK,newK){if(oldK===newK)return; const q=cart.q[oldK]; const pos=cart.order.indexOf(oldK); delete cart.q[oldK];
+  if(cart.q[newK]){cart.q[newK]+=q; cart.order.splice(pos,1);} else {cart.q[newK]=q; cart.order[pos]=newK;} saveCart(); refreshCart(); render();}
+function refreshCart(){
+  const n=cart.order.length, tot=cart.order.reduce((a,k)=>a+cart.q[k],0);
+  $('cartCnt').textContent=n; $('fabCnt').textContent=n;
+  $('cMus').value=cart.mus||''; $('cPrj').value=cart.prj||'';
+  if(!n){$('cartItems').innerHTML='<div class="cempty">Sepet boş. Arama sonuçlarındaki <b>+ Sepet</b> düğmesiyle ürün ekleyin.</div>'; $('cartSum').textContent=''; return;}
+  $('cartSum').innerHTML=`<b>${n}</b> kalem · toplam <b>${tot}</b> adet`;
+  $('cartItems').innerHTML=cart.order.map(k=>{const i=byKod[k], r=rows[i]; const alts=byGrup[r[I.grup]]||[i];
+    const sel=alts.length>1?`<select data-swap="${esc(k)}" title="Aynı gruptaki alternatif ürün">${alts.map(j=>`<option value="${esc(rows[j][I.kod])}"${j===i?' selected':''}>${esc(rows[j][I.marka])} · ${esc(rows[j][I.kod])}</option>`).join('')}</select>`:`<span>${esc(r[I.marka])}</span>`;
+    return `<div class="it"><div><div class="nm">${esc(r[I.ad])}</div><div class="sub2"><span class="code" style="font-size:11px;padding:2px 6px">${esc(r[I.grup])}</span>${sel}</div></div>
+      <div style="text-align:right"><div class="qty"><button data-dec="${esc(k)}">−</button><input data-qty="${esc(k)}" value="${cart.q[k]}" inputmode="numeric"><button data-inc="${esc(k)}">+</button></div><button class="rm" data-rm="${esc(k)}">Kaldır</button></div></div>`}).join('');
+}
+function openCart(o){document.body.classList.toggle('open',o); $('cartWrap').className=o?'open':''; if(o)refreshCart();}
+$('cartOpen').onclick=e=>{e.preventDefault();openCart(true)}; $('fab').onclick=()=>openCart(true);
+$('cartClose').onclick=$('ov').onclick=()=>openCart(false);
+$('cMus').oninput=e=>{cart.mus=e.target.value;saveCart()}; $('cPrj').oninput=e=>{cart.prj=e.target.value;saveCart()};
+$('cartItems').addEventListener('click',e=>{const t=e.target;
+  if(t.dataset.inc)setQty(t.dataset.inc,cart.q[t.dataset.inc]+1);
+  else if(t.dataset.dec)setQty(t.dataset.dec,cart.q[t.dataset.dec]-1);
+  else if(t.dataset.rm)setQty(t.dataset.rm,0);});
+$('cartItems').addEventListener('change',e=>{const t=e.target; if(t.dataset.qty)setQty(t.dataset.qty,t.value); if(t.dataset.swap)swapItem(t.dataset.swap,t.value);});
+function cartRows(){return cart.order.map((k,n)=>{const r=rows[byKod[k]];return [n+1,r[I.grup],r[I.kod],r[I.ad],r[I.marka],r[I.pn]||'',cart.q[k]]})}
+const HEAD=['Sıra','Grup Kodu','Malzeme Kodu','Malzeme Adı','Marka','PN','Adet'];
+function loadXlsx(){return window.XLSX?Promise.resolve():new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+$('cXls').onclick=async()=>{if(!cart.order.length)return toast('Sepet boş');
+  const d=new Date().toLocaleDateString('tr-TR'); const aoa=[['Erem Group - Malzeme Listesi'],['Firma / Müşteri',cart.mus||''],['Proje / Bina',cart.prj||''],['Tarih',d],[],HEAD,...cartRows()];
+  try{await loadXlsx(); const ws=XLSX.utils.aoa_to_sheet(aoa); ws['!cols']=[{wch:5},{wch:18},{wch:24},{wch:60},{wch:14},{wch:8},{wch:7}];
+    const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'Sepet'); XLSX.writeFile(wb,'malzeme-listesi'+(cart.prj?'-'+cart.prj:'')+'.xlsx');}
+  catch(e){const csv='﻿'+aoa.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='malzeme-listesi.csv';a.click();}};
+$('cPrint').onclick=()=>{if(!cart.order.length)return toast('Sepet boş');
+  $('printArea').innerHTML=`<h2 style="margin:0 0 6px">Erem Group – Malzeme Listesi</h2><p style="margin:0 0 12px">Firma / Müşteri: <b>${esc(cart.mus||'-')}</b> · Proje: <b>${esc(cart.prj||'-')}</b> · Tarih: ${new Date().toLocaleDateString('tr-TR')}</p>
+  <table><thead><tr>${HEAD.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${cartRows().map(r=>`<tr>${r.map(v=>`<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>`; window.print();};
+$('cCopy').onclick=()=>{if(!cart.order.length)return toast('Sepet boş'); const txt=[HEAD,...cartRows()].map(r=>r.join('\t')).join('\n'); navigator.clipboard?.writeText(txt).then(()=>toast('Liste kopyalandı (Excel\'e yapıştırılabilir)'),()=>{});};
+$('cClear').onclick=()=>{if(!cart.order.length)return; cart={order:[],q:{},mus:cart.mus,prj:cart.prj}; saveCart(); refreshCart(); render();};
+refreshCart();
 render();
 </script>
 </body>
